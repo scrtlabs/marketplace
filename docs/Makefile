@@ -55,7 +55,8 @@ clean:
 
 
 build:
-	cd .. && python setup.py build_ext --inplace
+	# cd .. && python setup.py build_ext --inplace
+	
 
 html: build
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
