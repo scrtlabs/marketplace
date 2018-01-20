@@ -30,7 +30,8 @@
   
 
   
-    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="#"/> 
+    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="#"/>
+        <link rel="next" title="Introduction" href="introduction.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -69,11 +70,22 @@
         
           
           
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Overview</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
 </ul>
-</div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
+</ul>
+
           
         
       </div>
@@ -109,14 +121,64 @@
 </div>
           <div role="main" class="document">
             
-  <p>Data Marketplace documentation</p>
+  <a class="reference external image-reference" href="https://enigmampc.github.io/marketplace"><img alt="Enigma | Marketplace" class="align-center" src="https://s3.amazonaws.com/enigmaco-docs/enigma-marketplace.jpg" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The Enigma Data Marketplace is the platform layer that lays in between the
+protocol and application layers of the Enigma network. It provides the
+decentralized and secure data infrastructure on top of which applications can be
+built, like <a class="reference external" href="https://enigmampc.github.io/catalyst">Catalyst</a>.</p>
+<p>The Data Marketplace is currently in Phase 1 of its development. The current
+implementation includes the on-chain portion, dealing with contextual
+information about data-sets, namespaces, and subscriptions. The on-chain logic
+is coded in smart contracts deployed on the Ethereum network, and is operated
+directly with Enigma tokens (ENG). In this first implementation, all data sets
+are provided off-chain by several providers, and their storage is managed
+independently from the logic embedded in the smart contract.</p>
+<p><strong>Phase 2</strong> includes the first implementation of an off-chain network, which will
+run on a federated network of known nodes (a-la sidechains). This could also be
+considered the MVP of the Enigma protocol — one that operates under a restricted
+threat model. <strong>Phase 3</strong> is where things get really interesting, and we launch our
+open off-chain network where anyone can become a node and provide storage and
+computational resources in return for ENG tokens. Finally, <strong>Phase 4</strong> is where we
+introduce important privacy features for protecting data in the network. This
+would allow extending the usability of our data protocol to practically all
+kinds of data streams, including those that include personally identifiable
+information (PII).</p>
+<p>Learn more at our <a class="reference external" href="https://enigmampc.github.io/marketplace/">Documentation Website</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
