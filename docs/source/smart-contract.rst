@@ -39,7 +39,7 @@ In order to use a data source, one would need to subscribe.
 
 The subscription process is built out of 2 steps: 
 
-1. The first step is to approve the Enigma Marketplace contract as a spender in the Enigma ERC20 contract,
+1. The first step is to approve the Enigma Data Marketplace contract as a spender in the Enigma ERC20 contract,
 
 the approval is on the behalf of the subscriber.
 
@@ -49,7 +49,7 @@ The subscription only requires the desired data source name.
 
 .. image:: http://ethereumisrael.org/wp-content/uploads/2018/01/SubscriptionProtocolDiagram.png
     :align: center
-    :alt: Enigma Marketplace subscription
+    :alt: Enigma Data Marketplace subscription
 
 The MarketPlace contract functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,5 +71,5 @@ Get some subscription details in the order:
 
 .. image:: http://ethereumisrael.org/wp-content/uploads/2018/01/MarketPlaceContractUML-1.png
     :align: center
-    :alt: Enigma Marketplace contract UML
+    :alt: Enigma Data Marketplace contract UML
 
