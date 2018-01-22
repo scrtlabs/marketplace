@@ -64,8 +64,8 @@ The MarketPlace contract functionality
 Enigma's Data Marketplace provides the following functionality.
  
 subscribe(bytes32 sourceName)
-
 *****************************
+
 Subscribes to a data source after approving the marketplace contract in 
 the ENG token contract as a spender on behalf of the subscriber. The amount
 of ENG available on the subscriber's address should be equal or larger than the
@@ -74,11 +74,13 @@ price of the desired data set.
 
 register(bytes32 sourceName, uint price, address owner)
 *******************************************************
+
 Registers a new data source. ``sourceName`` must be unique, and ``price`` is
 designated in ENG Tokens for a monthly subscription.
 
 checkAddressSubscription(address subscriber, bytes32 dataName)
 **************************************************************
+
 Given a subscriber address and an existing data set, returns the following 
 details of the user's subscription to that data set
  
