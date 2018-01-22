@@ -72,8 +72,30 @@
           
           
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Smart Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datasource-name">Datasource name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datasource-price">Datasource price</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datasource-owner">Datasource owner:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-marketplace-contract-functionality">The MarketPlace contract functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subscribe-bytes32-sourcename">subscribe(bytes32 sourceName)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-bytes32-sourcename-uint-price-address-owner">register(bytes32 sourceName, uint price, address owner)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
@@ -117,7 +139,61 @@
             
   <div class="section" id="smart-contract">
 <h1>Smart Contract<a class="headerlink" href="#smart-contract" title="Permalink to this headline">¶</a></h1>
-<p>Isan rules 👍</p>
+<p>The Marketplace registration and the subscription data are stored in a smart contract.</p>
+<p>The subscription prices to data sources are monthly fees.</p>
+<p>The contract is publicly available and can be used by any other contract in the network.</p>
+<div class="section" id="registration">
+<h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
+<p>In order to become a data curator, one would need to register with the smart contract.</p>
+<p>The registration process will require the following details:</p>
+<div class="section" id="datasource-name">
+<h3>Datasource name<a class="headerlink" href="#datasource-name" title="Permalink to this headline">¶</a></h3>
+<p>In the smart contract, we represent the data sources with unique names.</p>
+<p>The name could be any type of string as long as it doesn&#8217;t exist in the contract registry yet and its length is less than 32 bytes.</p>
+<p>It could be something like: &#8220;Bitcoin order book Poloniex&#8221;.</p>
+</div>
+<div class="section" id="datasource-price">
+<h3>Datasource price<a class="headerlink" href="#datasource-price" title="Permalink to this headline">¶</a></h3>
+<p>The price in ENG Tokens for a monthly subscription.</p>
+</div>
+<div class="section" id="datasource-owner">
+<h3>Datasource owner:<a class="headerlink" href="#datasource-owner" title="Permalink to this headline">¶</a></h3>
+<p>The owner of the data source to whom payouts will be made for using the data source.</p>
+<p>The owner is also the one who can change the price, de-activate listing etc.</p>
+</div>
+</div>
+<div class="section" id="subscription">
+<h2>Subscription<a class="headerlink" href="#subscription" title="Permalink to this headline">¶</a></h2>
+<p>In order to use a data source, one would need to subscribe.</p>
+<p>The subscription process is built out of 2 steps:</p>
+<ol class="arabic simple">
+<li>The first step is to approve the Enigma Data Marketplace contract as a spender in the Enigma ERC20 contract,</li>
+</ol>
+<p>the approval is on the behalf of the subscriber.</p>
+<ol class="arabic simple" start="2">
+<li>Once the MarketPlace contract has been approved a user can subscribe.</li>
+</ol>
+<p>The subscription only requires the desired data source name.</p>
+<img alt="Enigma Data Marketplace subscription" class="align-center" src="http://ethereumisrael.org/wp-content/uploads/2018/01/SubscriptionProtocolDiagram.png" />
+</div>
+<div class="section" id="the-marketplace-contract-functionality">
+<h2>The MarketPlace contract functionality<a class="headerlink" href="#the-marketplace-contract-functionality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subscribe-bytes32-sourcename">
+<h3>subscribe(bytes32 sourceName)<a class="headerlink" href="#subscribe-bytes32-sourcename" title="Permalink to this headline">¶</a></h3>
+<p>Used to subscribe to a Data source after approving the MarketPlace contract in the ENG token as a spender.
+The price should be bigger or equal to the desired Datasource price.</p>
+</div>
+<div class="section" id="register-bytes32-sourcename-uint-price-address-owner">
+<h3>register(bytes32 sourceName, uint price, address owner)<a class="headerlink" href="#register-bytes32-sourcename-uint-price-address-owner" title="Permalink to this headline">¶</a></h3>
+<p>Use for registering a data source.</p>
+</div>
+<div class="section" id="checkaddresssubscription-address-subscriber-bytes32-dataname">
+<h3>checkAddressSubscription(address subscriber, bytes32 dataName)<a class="headerlink" href="#checkaddresssubscription-address-subscriber-bytes32-dataname" title="Permalink to this headline">¶</a></h3>
+<p>Get some subscription details in the order:
+[address subscriber, uint price, uint startTime, uint endTime, bool expired]</p>
+<img alt="Enigma Data Marketplace contract UML" class="align-center" src="http://ethereumisrael.org/wp-content/uploads/2018/01/MarketPlaceContractUML-1.png" />
+</div>
+</div>
 </div>
 
 
