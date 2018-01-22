@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subscription">Subscription</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-marketplace-contract-functionality">The MarketPlace contract functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subscribe-bytes32-sourcename">subscribe(bytes32 sourceName)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#register-bytes32-sourcename-uint-price-address-owner">register(bytes32 sourceName, uint price, address owner)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
 </ul>
@@ -194,9 +195,13 @@ from step #1 above succeeds).</li>
 <div class="section" id="the-marketplace-contract-functionality">
 <h2>The MarketPlace contract functionality<a class="headerlink" href="#the-marketplace-contract-functionality" title="Permalink to this headline">¶</a></h2>
 <p>Enigma&#8217;s Data Marketplace provides the following functionality.</p>
-<p>subscribe(bytes32 sourceName)</p>
-<p>of ENG available on the subscriber&#8217;s address should be equal or larger than the
+<div class="section" id="subscribe-bytes32-sourcename">
+<h3>subscribe(bytes32 sourceName)<a class="headerlink" href="#subscribe-bytes32-sourcename" title="Permalink to this headline">¶</a></h3>
+<p>Subscribes to a data source after approving the marketplace contract in
+the ENG token contract as a spender on behalf of the subscriber. The amount
+of ENG available on the subscriber&#8217;s address should be equal or larger than the
 price of the desired data set.</p>
+</div>
 <div class="section" id="register-bytes32-sourcename-uint-price-address-owner">
 <h3>register(bytes32 sourceName, uint price, address owner)<a class="headerlink" href="#register-bytes32-sourcename-uint-price-address-owner" title="Permalink to this headline">¶</a></h3>
 <p>Registers a new data source. <code class="docutils literal"><span class="pre">sourceName</span></code> must be unique, and <code class="docutils literal"><span class="pre">price</span></code> is
