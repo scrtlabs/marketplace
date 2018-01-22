@@ -36,28 +36,26 @@ The owner is also the one who can change the price, de-activate listing etc.
 Subscription
 ~~~~~~~~~~~~
 In order to use a data source, one would need to subscribe.
+During the subscription process a subscriber is paying the data curator.
+The payment is delegated via the Marketplace contract.
 
-The subscription process is built out of 2 steps: 
+The subscription process is built out of 3 steps: 
 
-1. The first step is to approve the Enigma Data Marketplace contract as a spender in the Enigma ERC20 contract,
-
-the approval is on the behalf of the subscriber.
-
-2. Once the MarketPlace contract has been approved a user can subscribe.
-
-The subscription only requires the desired data source name.
+1. The subscriber approve the Marketplace contract as a spender with the amount that is required for the subscription.
+2. Thge subscriber register() to the Marketplace contract. 
+3. The Marketplace contract deduct the amount and uses trasferFrom() method to pay the data curator.
 
 .. image:: http://ethereumisrael.org/wp-content/uploads/2018/01/SubscriptionProtocolDiagram.png
     :align: center
     :alt: Enigma Data Marketplace subscription
 
-The MarketPlace contract functionality
+The Marketplace contract functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 
 subscribe(bytes32 sourceName)
 ********************************************
-Used to subscribe to a Data source after approving the MarketPlace contract in the ENG token as a spender.
+Used to subscribe to a Data source after approving the Marketplace contract in the ENG token as a spender.
 The price should be bigger or equal to the desired Datasource price.
 
 register(bytes32 sourceName, uint price, address owner)
