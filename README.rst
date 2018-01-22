@@ -18,7 +18,12 @@ information about data-sets, namespaces, and subscriptions. The on-chain logic
 is coded in smart contracts deployed on the Ethereum network, and is operated 
 directly with Enigma tokens (ENG). In this first implementation, all data sets 
 are provided off-chain by several providers, and their storage is managed 
-independently from the logic embedded in the smart contract.
+independently from the logic embedded in the smart contract. 
+
+The first implementation of the data marketplace is designed for integration 
+with Catalyst on the application layer. Data sets are consumed as premium data 
+inputs to trading algorithms that derive trading signals from them in the quest
+to improve performance.
 
 **Phase 2** includes the first implementation of an off-chain network, which will 
 run on a federated network of known nodes (a-la sidechains). This could also be 
