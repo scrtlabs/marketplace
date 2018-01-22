@@ -44,14 +44,15 @@ Subscription
 In order to access an existing data set, a user needs to subscribe to the 
 desired data set through a two-step process: 
 
-1. The first step is to approve the Enigma Data Marketplace contract as a 
-   spender in the Enigma ERC20 contract on the behalf of the subscriber.
+1. The subscriber approves the Enigma Data Marketplace contract as a 
+   spender in the Enigma ERC20 contract on their behalf for the
+   specified amount for that data set.
 
-2. Once the Marketplace contract has been approved, a user can send a 
+3. Once the Marketplace contract has been approved, a user can send a 
    subscription transaction that includes the desired data source name. The
    price is specified in the data set (stored in the marketplace contract), and
    the amount is transferred on behalf of the user (after the pre-approval 
-   from step #1 above succeeds)
+   from step #1 above succeeds).
 
 .. image:: http://ethereumisrael.org/wp-content/uploads/2018/01/SubscriptionProtocolDiagram.png
     :align: center
@@ -63,19 +64,21 @@ The MarketPlace contract functionality
 Enigma's Data Marketplace provides the following functionality.
  
 subscribe(bytes32 sourceName)
+
 *****************************
 Subscribes to a data source after approving the marketplace contract in 
 the ENG token contract as a spender on behalf of the subscriber. The amount
 of ENG available on the subscriber's address should be equal or larger than the
 price of the desired data set.
 
+
 register(bytes32 sourceName, uint price, address owner)
-******************************************************************
+*******************************************************
 Registers a new data source. ``sourceName`` must be unique, and ``price`` is
 designated in ENG Tokens for a monthly subscription.
 
 checkAddressSubscription(address subscriber, bytes32 dataName)
-******************************************************************
+**************************************************************
 Given a subscriber address and an existing data set, returns the following 
 details of the user's subscription to that data set
  
