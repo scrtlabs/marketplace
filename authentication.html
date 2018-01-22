@@ -95,7 +95,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-wallets">Supported Wallets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
 </ul>
@@ -137,7 +141,53 @@
             
   <div class="section" id="authentication">
 <h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
-<p>Victor rules 👍</p>
+<p>The first implementation of the Enigma Data Marketplace is designed to integrate
+with Catalyst on the application layer. Until the Enigma network is up and
+running, a temporary implementation of the functionality that will be provided
+by the network in the future is offered by an authentication server hosted in
+the cloud.</p>
+<p>When a user running Catalyst on their local machine requests to ingest a data
+set they are subscribed to, Catalyst routes that request to the authentication
+server. The authentication scheme used between client and server is an
+implementation of digest access authentication using the user&#8217;s private and
+public cryptographic keys, without the client ever handling their private key
+directly.</p>
+<p>When the user requests access to a subscribed data set, their Catalyst client
+opens a session with the authentication server. The server replies back with a
+challenge that includes a <code class="docutils literal"><span class="pre">nonce</span></code> and an <code class="docutils literal"><span class="pre">opaque</span></code> as specified in
+<a class="reference external" href="https://tools.ietf.org/html/rfc2617#section-3.2.1">RFC 2617</a>. The client then
+requests the <code class="docutils literal"><span class="pre">nonce</span></code> to be hashed and signed using the user&#8217;s private key.
+The client replies to the authentication server with the signature of the
+hashed <code class="docutils literal"><span class="pre">nonce</span></code> and the <code class="docutils literal"><span class="pre">opaque</span></code> untouched. The server validates that the
+<code class="docutils literal"><span class="pre">nonce</span></code> and <code class="docutils literal"><span class="pre">opaque</span></code> are valid, and verifies that the signature corresponds
+with the user&#8217;s public address. If successful, queries the smart contract to
+validate that the user&#8217;s public address holds and active subscrition to the
+requested data set, and if successful responds with the requested data set back
+to the client, thereby completing the request.</p>
+<img alt="Digest Authentication" class="align-center" src="https://s3.amazonaws.com/enigmaco-docs/digest-authentication.png" />
+<p>Most blockchain implementations, and Ethereum in particular, use public-key
+cryptography in their addressing scheme. Each address on the blockchain is
+associated with a private and a public key, where the private key is secret,
+the public key can be mathematically derived from the private key, and the
+public address is a hash+checksum of the public key. It is critical that the
+private key is not leaked, otherwise whoever has access to the private key gains
+full control of its associated address.</p>
+<p>Instead of Catalyst handling any private keys to authenticate requests, Catalyst
+supports external wallets that handle the user&#8217;s private keys, and can sign
+transactions on their behalf. Catalyst requests any of the supported wallets to
+sign a transaction on behalf of the user (the wallet will require the user to
+enter a password to unlock their account), and returns the signature to Catalyst
+so that it can continue with the authentication process.</p>
+<div class="section" id="supported-wallets">
+<h2>Supported Wallets<a class="headerlink" href="#supported-wallets" title="Permalink to this headline">¶</a></h2>
+<p>The wallets currently supported by Catalyst to access the Data Marketplace are
+MyEtherWallet and Parity.</p>
+</div>
+<div class="section" id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+<p>The source code for the digest authentication server is available at:
+TBD</p>
+</div>
 </div>
 
 

@@ -94,7 +94,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#supported-wallets">Supported Wallets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#source-code">Source Code</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
 </ul>
@@ -152,6 +156,10 @@ is coded in smart contracts deployed on the Ethereum network, and is operated
 directly with Enigma tokens (ENG). In this first implementation, all data sets
 are provided off-chain by several providers, and their storage is managed
 independently from the logic embedded in the smart contract.</p>
+<p>The first implementation of the data marketplace is designed for integration
+with Catalyst on the application layer. Data sets are consumed as premium data
+inputs to trading algorithms that derive trading signals from them in the quest
+to improve performance.</p>
 <p><strong>Phase 2</strong> includes the first implementation of an off-chain network, which will
 run on a federated network of known nodes (a-la sidechains). This could also be
 considered the MVP of the Enigma protocol — one that operates under a restricted
