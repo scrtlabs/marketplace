@@ -46,11 +46,41 @@ sign a transaction on behalf of the user (the wallet will require the user to
 enter a password to unlock their account), and returns the signature to Catalyst
 so that it can continue with the authentication process.
 
+Signature Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The digest authentication scheme for Enigma's Data Marketplace uses an 
+Ethereum-compatible signature implementation that adds a custom Ethereum 
+message and length using the following structure:
+
+.. code:: python
+
+	message_to_sign(message):
+		 msg = "\x19Ethereum Signed Message:\n" + str(len(message)) + message
+		 return sha3(msg)
+
+where the ``sha3()`` is Ethereum's implementation of the 
+`KECCAK-256 <https://keccak.team/index.html>`_ cryptographic hash function, 
+albeit it does not follow the 
+`FIPS-202 <https://keccak.team/specifications.html#FIPS_202>`_ based standard 
+(a.k.a SHA-3).
+
+
 Supported Wallets
 ~~~~~~~~~~~~~~~~~
 
-The wallets currently supported by Catalyst to access the Data Marketplace are
-MyEtherWallet and Parity.
+The wallets currently supported by Catalyst to access the Data Marketplace are:
+
+* MyEtherWallet
+* Parity
+* Any other wallet that allows to sign transactions through the MyEtherWallet 
+  online interface: 
+
+  * MetaMask / Mist
+  * Ledger Wallet
+  * TREZOR
+  * Digital Bitbox
+  * Keystore / JSON File
 
 Source Code
 ~~~~~~~~~~~
