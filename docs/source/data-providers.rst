@@ -1,14 +1,14 @@
 Data Providers
 ==============
 
-Data Providers can publish data sources to Catalyst and get rewarded in
-ENG tokens. Providers set the price of their data set. Subscribers can
-pay providers directly through the Enigma Marketplace smart contract.
-Engima does not interfere in the transactions.
+As a data publisher, you can publish your data sources to the Catalyst
+Marketplace and get rewarded in ENG tokens. Providers set the price of their
+data set. The Catalyst Marketplace brokers the transaction using
+smart contract.
 
 Data Sources
 ~~~~~~~~~~~~
-A data source can contain any data which fits in a tabular format.
+A data source may contain any data which fits in a tabular format.
 However, since data will be consumed by Catalyst for the purpose of
 algorithmic trading, it must have some predictable properties. In
 particular, each data source must contain these two columns:
