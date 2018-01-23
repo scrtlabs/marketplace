@@ -110,7 +110,7 @@ This sample data set contains market cap information:
 Data Frequency and Availability
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Data frequency and availability associated fields must be provided when 
-registering each data source, as per the scheme outlined here:
+registering each data source, as per the scheme outlined below:
 
 * Data frequency: How frequently do data events occur?
 
@@ -138,8 +138,10 @@ registering each data source, as per the scheme outlined here:
 Registering Data Sets
 ~~~~~~~~~~~~~~~~~~~~~
 To register a new data set, download and install the Catalyst client.
-Then, use the `catalyst register-data` command. In this example, data is
-published multiple times per hour at a variable time::
+Then, use the ``catalyst register-data`` command. In this example, data is
+published multiple times per hour at a variable time:
+
+.. code:: bash
 
     $ catalyst register-data
     Enter the Data set name: Test
@@ -193,11 +195,11 @@ Here is the same directory after successfully publishing the data.
     :align: center
     :alt: Test Data set Folder After Publish
 
-The file naming convention is inconsequential, Catalyst will process any
+The file naming convention is inconsequential; Catalyst will process any
 file with a CSV extension. As long as the data is correctly represented, it
 can be contained in one file or split across multiple files.
 
-On error, Catalyst simply stops and display the error in the standard output.
+On error, Catalyst simply stops and displays the error in the standard output.
 It does not roll-back the files already published.
 
 Publishing Live Data

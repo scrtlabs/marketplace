@@ -28,7 +28,7 @@
   
 
   
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
   
 
   
@@ -263,7 +263,7 @@ Use as many decimals as necessary.</p>
 <div class="section" id="data-frequency-and-availability">
 <h2>Data Frequency and Availability<a class="headerlink" href="#data-frequency-and-availability" title="Permalink to this headline">¶</a></h2>
 <p>Data frequency and availability associated fields must be provided when
-registering each data source, as per the scheme outlined here:</p>
+registering each data source, as per the scheme outlined below:</p>
 <ul>
 <li><p class="first">Data frequency: How frequently do data events occur?</p>
 <blockquote>
@@ -304,9 +304,9 @@ frequency on an ongoing basis?</p>
 <div class="section" id="registering-data-sets">
 <h2>Registering Data Sets<a class="headerlink" href="#registering-data-sets" title="Permalink to this headline">¶</a></h2>
 <p>To register a new data set, download and install the Catalyst client.
-Then, use the <cite>catalyst register-data</cite> command. In this example, data is
+Then, use the <code class="docutils literal"><span class="pre">catalyst</span> <span class="pre">register-data</span></code> command. In this example, data is
 published multiple times per hour at a variable time:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ catalyst register-data
+<div class="code bash highlight-python"><div class="highlight"><pre>$ catalyst register-data
 Enter the Data set name: Test
 Enter the data frequency [daily, hourly, minute]: hourly
 Can data be published every hour at a regular time? [default: Y]: N
@@ -351,10 +351,10 @@ each file when successfully published.</p>
 <img alt="Test Data set Folder Before Publish" class="align-center" src="https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-before.png" />
 <p>Here is the same directory after successfully publishing the data.</p>
 <img alt="Test Data set Folder After Publish" class="align-center" src="https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-after.png" />
-<p>The file naming convention is inconsequential, Catalyst will process any
+<p>The file naming convention is inconsequential; Catalyst will process any
 file with a CSV extension. As long as the data is correctly represented, it
 can be contained in one file or split across multiple files.</p>
-<p>On error, Catalyst simply stops and display the error in the standard output.
+<p>On error, Catalyst simply stops and displays the error in the standard output.
 It does not roll-back the files already published.</p>
 </div>
 <div class="section" id="publishing-live-data">
