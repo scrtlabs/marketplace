@@ -8,7 +8,7 @@ Engima does not interfere in the transactions.
 
 Data Sources
 ~~~~~~~~~~~~
-A data source can contain any data which can fit in a tabular format.
+A data source can contain any data which fits in a tabular format.
 However, since data will be consumed by Catalyst for the purpose of
 algorithmic trading, it must have some predictable properties. In
 particular, each data source must contain these two columns:
@@ -18,6 +18,17 @@ particular, each data source must contain these two columns:
 * Symbol: The symbol of the currency of market associated with each even.
   If an event involves more that one currency or market, multiple entries can
   be provided with a semicolon separator.
+
+Here are the applicable data type conventions:
+
+* String: String (or text) data must surrounded with double-quotes
+* Date/Time: Both date and date/time types are supported. The date fields
+  should be represented as String following the ISO 8601 format using the
+  appropriate level of precision. Valid examples include:
+    * "2017-11-01" or "2017-11-1" (for November 1st, 2017)
+    * "2017-12-14 23:00" (for December 14th, 2017 at 11:00PM)
+* Numbers: Numbers should be provided as integer or floats without quotes.
+  Use as many decimal as necessary.
 
 This sample data source contains market cap information:
 
@@ -53,10 +64,10 @@ source.
 Registering Data Sources
 ~~~~~~~~~~~~~~~~~~~~~~~~
 To register a new data source, download and install the Catalyst client.
-Then, use the `catalyst data register` command. In this example, data is
-published multiple times per hour at a variable time.::
+Then, use the `catalyst register-data` command. In this example, data is
+published multiple times per hour at a variable time::
 
-    $ catalyst data register
+    $ catalyst register-data
     Enter the Data Source name: Test
     Enter the data frequency [daily, hourly, minute]: hourly
     Can data be published every hour at a regular time? [default: Y]: N
@@ -67,16 +78,17 @@ published multiple times per hour at a variable time.::
     Signature authorized.
     New data source: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
 
-In the following example, data is published daily on a fixed schedule.::
+In the following example, data is published daily on a fixed schedule::
 
+    $ catalyst register-data
     Enter the Data Source name: Test
     Enter the data frequency [daily, hourly, minute]: daily
     Can data be published every day at a regular time? [default: Y]: Y
     At what time will the data be published? [default: 0:00]: 0:00
     Does it include historical data [default: Y]? Y
-    Enter the first event date of an historical data range: 2017-01-01
+    Enter the first event date of the range: 2017-01-01
     Enter the last event date of the same range: 2017-12-31
-    Do you want to add another historical data range? N
+    Do you want to add another historical date range? N
     Please unlock your wallet account to authorize signature.
 
     Signature authorized.
@@ -84,18 +96,18 @@ In the following example, data is published daily on a fixed schedule.::
 
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-To upload data in an registered data source, use the `catalyst data publish`
-command.::
+To upload data in an registered data source, use the `catalyst publish-data`
+command::
 
-    $ catalyst data publish --data-source=Test --datadir=~/test-data/
+    $ catalyst publish-data --data-source=Test --datadir=~/test-data/
 
 Upon execution, Catalyst will automatically identify, validate and upload
-the data in all CSV files immediately inside the specified `datadir`. It
-will create a `published` subdirectory in which to move each file after
-successfully published.
+the data in all CSV files directly inside the specified `datadir`. It will not
+scan recursively. It will create a `published` subdirectory in which to move
+each file when successfully published.
 
 For illustration, here is our `test-data` directory before running the
-`catalyst data publish` command.
+`publish-data` command.
 
 .. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-before.png
     :align: center
@@ -106,5 +118,21 @@ Here is the same directory after successfully publishing the data.
 .. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-after.png
     :align: center
     :alt: Test Data Source Folder After Publish
+
+The file naming convention is inconsequential, Catalyst will process any
+file with a CSV extension. As long as the data is correctly represented, it
+can be contained in one file or split across multiple files.
+
+On error, Catalyst simply stops and display the error in the standard output.
+It does not roll-back the files already published.
+
+Publishing Live Data
+~~~~~~~~~~~~~~~~~~~~
+Publishing live data works similarly to publishing historical data
+except that Catalyst will watch the `datadir` and try to publish new data in
+new or modified CSV files. To publish live data, simply add a the `watch`
+parameter to the 'publish-data` command::
+
+    $ catalyst publish-data --datasource=Test --datadir=~/test-data/ --watch
 
 
