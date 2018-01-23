@@ -31,7 +31,7 @@ to the client, thereby completing the request.
 	:align: center
 	:alt: Digest Authentication
 
-Most blockchain implementations, and Ethereum in particular, use public-key
+All blockchain implementations, and Ethereum in particular, use public-key
 cryptography in their addressing scheme. Each address on the blockchain is 
 associated with a private and a public key, where the private key is secret, 
 the public key can be mathematically derived from the private key, and the 
