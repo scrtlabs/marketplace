@@ -2,8 +2,10 @@
     :target: https://enigmampc.github.io/marketplace
     :align: center
     :alt: Enigma | Marketplace
+
 |
 |
+
 Overview
 ========
 

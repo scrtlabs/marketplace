@@ -1,5 +1,5 @@
-Authentication
-==============
+Server-side Authentication
+==========================
 
 The first implementation of the Enigma Data Marketplace is designed to integrate 
 with Catalyst on the application layer. Until the Enigma network is up and 

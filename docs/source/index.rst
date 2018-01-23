@@ -1,6 +1,8 @@
 .. include:: ../../README.rst
+
 |
 |
+
 Table of Contents
 -----------------
 
@@ -9,8 +11,9 @@ Table of Contents
 
    introduction
    smart-contract
-   user-guide
+   data-subscribers
+   data-providers
    authentication
    data-sets
-   data-providers
+
 
