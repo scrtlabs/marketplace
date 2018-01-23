@@ -1,19 +1,23 @@
-User Guide
-==========
+Data Subscribers
+================
 
-Catalyst users may subscribe to data sets from the Catalyst Marketplace
+Catalyst users may subscribe to data sets from the Enigma Data Marketplace
 and use them in their trading algorithms. Depending on their properties,
 data sets may be usable for backtesting as well as live trading.
 
 Subscribe
 ~~~~~~~~~
-The Catalyst Marketplace enables data providers to publish data sets
-directly to subscribers. All published data is validated and hosted on the
-Catalyst Marketplace. Your subscription payment is protected by the Catalyst
-Marketplace smart contract. If a provider stops delivering data as per their
-agreement, the subscriber will be automatically refunded.
+The Enigma Data Marketplace enables data providers to publish data sets and make
+them directly available to subscribers. All published data is validated and 
+hosted on the Enigma Data Marketplace. Your subscription payment is protected 
+by the :doc:`Enigma Data Marketplace Smart Contract<smart-contract>`. If a 
+provider stops delivering data as per their agreement, the subscriber will be 
+automatically refunded on a *pro rata* basis for the unfulfilled portion of 
+their subscription.
 
-The following command subscribes to the Marketcap data set::
+The following command subscribes to the Marketcap data set:
+
+.. code:: bash
 
     $ catalyst subscribe-data --dataset=Marketcap
     Subscribing to the Marketcap data set published by Enigma.
@@ -37,12 +41,14 @@ The following command subscribes to the Marketcap data set::
 
 Ingest
 ~~~~~~
-Ingest data makes the specified portion of a data set available locally
-for backtesting with Catalyst.
+The Catalyst ``ingest-data`` command makes the specified portion of a data set 
+available locally for backtesting with Catalyst.
 
-This commands ingests the all the data available in the Marketcap data set.
+This commands ingests all the data available in the Marketcap data set.
 If the data takes a long time to download and you only need a subset,
-use the command parameters to filter by date::
+use the command parameters to filter by date:
+
+.. code:: bash
 
     $ catalyst ingest-data --dataset=Marketcap
     Ingesting data set Marketcap...
@@ -53,11 +59,13 @@ The progress bar will dynamically update until completion.
 Use in an Algorithm
 ~~~~~~~~~~~~~~~~~~~
 Once you have subscribed to a data set, and ingested the required data if
-appropriate, the data source is now usable in algorithms.
+appropriate, the data source is now usable in your algorithms.
 
-This snippet of code show the how to use our Marketcap data set in the
+This snippet of code below shows how to use our Marketcap data set in the
 `initialize()` function of an algorithm to rank the top-five asset by
-market cap::
+market cap:
+
+.. code:: python
 
     def initialize(context):
         # Get the marketcap data

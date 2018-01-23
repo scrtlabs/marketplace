@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Subscribers &mdash; Enigma Data Marketplace 0.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
+        <link rel="next" title="Data Providers" href="data-providers.html"/>
+        <link rel="prev" title="Smart Contract" href="smart-contract.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-functionality">The MarketPlace contract functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#subscribe-bytes32-sourcename">subscribe(bytes32 sourceName)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#register-bytes32-sourcename-uint-price-address-owner">register(bytes32 sourceName, uint price, address owner)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#source-code">Source code</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Data Subscribers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subscribe">Subscribe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ingest">Ingest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-in-an-algorithm">Use in an Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-sets">Data Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-frequency-and-availability">Data Frequency and Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#registering-data-sets">Registering Data Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-historical-data">Publishing Historical Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-live-data">Publishing Live Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#signature-implementation">Signature Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#supported-wallets">Supported Wallets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Enigma Data Marketplace</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Data Subscribers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/data-subscribers.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="data-subscribers">
+<h1>Data Subscribers<a class="headerlink" href="#data-subscribers" title="Permalink to this headline">¶</a></h1>
+<p>Catalyst users may subscribe to data sets from the Enigma Data Marketplace
+and use them in their trading algorithms. Depending on their properties,
+data sets may be usable for backtesting as well as live trading.</p>
+<div class="section" id="subscribe">
+<h2>Subscribe<a class="headerlink" href="#subscribe" title="Permalink to this headline">¶</a></h2>
+<p>The Enigma Data Marketplace enables data providers to publish data sets and make
+them directly available to subscribers. All published data is validated and
+hosted on the Enigma Data Marketplace. Your subscription payment is protected
+by the <a class="reference internal" href="smart-contract.html"><em>Enigma Data Marketplace Smart Contract</em></a>. If a
+provider stops delivering data as per their agreement, the subscriber will be
+automatically refunded on a <em>pro rata</em> basis for the unfulfilled portion of
+their subscription.</p>
+<p>The following command subscribes to the Marketcap data set:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ catalyst subscribe-data --dataset=Marketcap
+Subscribing to the Marketcap data set published by Enigma.
+
+Terms:
+    * New data published once per day at exactly 0:00
+    * Daily historical data available between:
+        * 2017-01-01 to 2018-01-21
+    * Subscription price 1ENG/month
+    * Subscribing for 1 month: 2017-01-22 to 2017-02-22
+    * Today&#39;s Deposit: 1ENG
+    * The entire 1ENG deposit will be transferred to Enigma on 2017-02-22
+      upon completion of these terms.
+
+Agree to subscribe to Marketcap for 1ENG? [N] Y
+Please unlock your wallet account to authorize signature.
+
+Signature authorized.
+0x627306090abab3a6e1400e9345bc60c78a8bef57 successfully subscribed to
+Marketcap for 1ENG
+</pre></div>
+</div>
+</div>
+<div class="section" id="ingest">
+<h2>Ingest<a class="headerlink" href="#ingest" title="Permalink to this headline">¶</a></h2>
+<p>The Catalyst <code class="docutils literal"><span class="pre">ingest-data</span></code> command makes the specified portion of a data set
+available locally for backtesting with Catalyst.</p>
+<p>This commands ingests all the data available in the Marketcap data set.
+If the data takes a long time to download and you only need a subset,
+use the command parameters to filter by date:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ catalyst ingest-data --dataset=Marketcap
+Ingesting data set Marketcap...
+[=                                   ]  Ingesting daily data for Marketcap:    4%  00:02:43
+</pre></div>
+</div>
+<p>The progress bar will dynamically update until completion.</p>
+</div>
+<div class="section" id="use-in-an-algorithm">
+<h2>Use in an Algorithm<a class="headerlink" href="#use-in-an-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>Once you have subscribed to a data set, and ingested the required data if
+appropriate, the data source is now usable in your algorithms.</p>
+<p>This snippet of code below shows how to use our Marketcap data set in the
+<cite>initialize()</cite> function of an algorithm to rank the top-five asset by
+market cap:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c"># Get the marketcap data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span>
+        <span class="s">&#39;marketcap&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="p">)</span>  <span class="c"># type: pd.DataFrame</span>
+
+    <span class="c"># Keep only the 100 top currencies by market cap</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">100</span><span class="p">))]</span>
+    <span class="c"># Sort the currencies by market cap</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c"># Prepare the standard output for a wide DataFrame</span>
+    <span class="n">set_print_settings</span><span class="p">()</span>
+    <span class="c"># Display the top 100 largest currencies</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;the marketplace data:</span><span class="se">\n</span><span class="s">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="c"># Out of the 100 largest currencies, we want to trade the smallest</span>
+    <span class="c"># 5 markets with an Ether quote on the exchange of our algorithm</span>
+    <span class="n">quote_currency</span> <span class="o">=</span> <span class="s">&#39;eth&#39;</span>
+    <span class="n">exchange</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">exchanges</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">exchanges</span><span class="p">))]</span>
+    <span class="c"># Get a list of symbols only for assets tradable since the start</span>
+    <span class="c"># date of our algorithm.</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">symbol</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">exchange</span><span class="o">.</span><span class="n">assets</span>
+               <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">start_date</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">.</span><span class="n">datetime</span><span class="p">]</span>
+
+    <span class="c"># Initialize an asset list which we will populate with the 5 smallest</span>
+    <span class="c"># markets</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">assets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">currency</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">assets</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="s">&#39;{}_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">currency</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">quote_currency</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data-providers.html" class="btn btn-neutral float-right" title="Data Providers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="smart-contract.html" class="btn btn-neutral" title="Smart Contract" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Enigma MPC, Inc..
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
