@@ -133,6 +133,6 @@ except that Catalyst will watch the `datadir` and try to publish new data in
 new or modified CSV files. To publish live data, simply add a the `watch`
 parameter to the 'publish-data` command::
 
-    $ catalyst publish-data --datasource=Test --datadir=~/test-data/ --watch
+    $ catalyst publish-data --dataset=Test --datadir=~/test-data/ --watch
 
 
