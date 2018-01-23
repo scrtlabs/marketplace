@@ -96,6 +96,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#signature-implementation">Signature Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-wallets">Supported Wallets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
 </ul>
@@ -178,10 +179,38 @@ transactions on their behalf. Catalyst requests any of the supported wallets to
 sign a transaction on behalf of the user (the wallet will require the user to
 enter a password to unlock their account), and returns the signature to Catalyst
 so that it can continue with the authentication process.</p>
+<div class="section" id="signature-implementation">
+<h2>Signature Implementation<a class="headerlink" href="#signature-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The digest authentication scheme for Enigma&#8217;s Data Marketplace uses an
+Ethereum-compatible signature implementation that adds a custom Ethereum
+message and length using the following structure:</p>
+<div class="code python highlight-python"><div class="highlight"><pre>message_to_sign(message):
+         msg = &quot;\x19Ethereum Signed Message:\n&quot; + str(len(message)) + message
+         return sha3(msg)
+</pre></div>
+</div>
+<p>where the <code class="docutils literal"><span class="pre">sha3()</span></code> is Ethereum&#8217;s implementation of the
+<a class="reference external" href="https://keccak.team/index.html">KECCAK-256</a> cryptographic hash function,
+albeit it does not follow the
+<a class="reference external" href="https://keccak.team/specifications.html#FIPS_202">FIPS-202</a> based standard
+(a.k.a SHA-3).</p>
+</div>
 <div class="section" id="supported-wallets">
 <h2>Supported Wallets<a class="headerlink" href="#supported-wallets" title="Permalink to this headline">¶</a></h2>
-<p>The wallets currently supported by Catalyst to access the Data Marketplace are
-MyEtherWallet and Parity.</p>
+<p>The wallets currently supported by Catalyst to access the Data Marketplace are:</p>
+<ul class="simple">
+<li>MyEtherWallet</li>
+<li>Parity</li>
+<li>Any other wallet that allows to sign transactions through the MyEtherWallet
+online interface:<ul>
+<li>MetaMask / Mist</li>
+<li>Ledger Wallet</li>
+<li>TREZOR</li>
+<li>Digital Bitbox</li>
+<li>Keystore / JSON File</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
