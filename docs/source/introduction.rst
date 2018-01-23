@@ -3,12 +3,13 @@ Introduction
 
 At a high level, Enigma creates a decentralized data marketplace that allows 
 people, companies and organizations to contribute data (we call these data 
-curators), which users of the system can then subscribe to and consume. In 
+providers), which users of the system can then subscribe to and consume. In 
 other words, the data marketplace acts as a single gateway to a network of 
-databases, owned collectively by data curators who supply the content. The 
-marketplace is decentralized and not owned by any single party. Instead, 
-listing and subscribing to a data source is managed on-chain, including rewards
-and penalties, which are exchanged using the ENG token.
+databases, owned collectively by data providers who supply the content. Our 
+vision is that the data marketplace is decentralized and not owned by any 
+single party. Instead, listing and subscribing to a data source is managed 
+on-chain, including rewards and penalties, which are exchanged using the ENG 
+token.
 
 The data itself, its storage and transmission, lives off-chain. In that sense, 
 the blockchain acts as the controller of the network (as was illustrated in 
@@ -35,11 +36,11 @@ applications, by signing a query request and broadcasting it over the off-chain
 network of peers.
 
 Fairness in the system is guaranteed mostly through economic incentives — good
-datasets will have more subscribers, which pay more to their data curators and
+datasets will have more subscribers, which pay more to their data providers and
 are ranked higher in the system. Data sources can have a ‘try before you buy’ 
 option, which help attract new subscribers. If a data set is then shown to not 
 be useful, most people would unsubscribe and the source would be further 
-reduced in ranking. In addition, some provable offenses (e.g., a data curator 
+reduced in ranking. In addition, some provable offenses (e.g., a data provider 
 going offline) can be penalized.
 
 Below, we will walk you through an end-to-end example of how to use the data 
@@ -58,7 +59,7 @@ Naturally, the first step in the process is to upload a data set to the
 marketplace and register it. Under the hood, this is somewhat of an involved 
 procedure, which is a mix of on-chain and off-chain operations:
 
-1. The data curator, through their off-chain client, submits a *cron*-like job 
+1. The data provider, through their off-chain client, submits a *cron*-like job 
    with the data curation script and details on how frequently to execute the 
    job (e.g., minutely, hourly, daily). This ensures the data always remains 
    up-to-date. In addition, the client needs to specify some metadata such as 
@@ -66,10 +67,10 @@ procedure, which is a mix of on-chain and off-chain operations:
    execute the job (more on this later).
 
 2. A *register* transaction is sent to the blockchain, signed by the data 
-   curator. The transaction needs to include in its payload the name of the 
+   provider. The transaction needs to include in its payload the name of the 
    data-set; a price to subscribe (we’ll assume for simplicity these are monthly 
-   subscriptions); a deposit the data curator locks in as collateral; payout 
-   addresses of nodes that assist the curator (e.g., in providing computing and
+   subscriptions); a deposit the data provider locks in as collateral; payout 
+   addresses of nodes that assist the provider (e.g., in providing computing and
    storage resources); and a hash of all meta-data that is stored off-chain.
 
 3. All meta-data concerning the new data-set is broadcast as a signed message to
@@ -116,7 +117,7 @@ Consumption
 ~~~~~~~~~~~
 
 As opposed to subscription, consumption happens completely off-chain. A user who
-wishes to query a specific data-set, for example — <curator_address>/coinbase_data, 
+wishes to query a specific data-set, for example — <provider_address>/coinbase_data, 
 can broadcast a message requesting it. Nodes in the off-chain network propagate
 the message, until it reaches a persistence node having direct access to the 
 data. The persistence node then parses the request, verifying that the user is
@@ -127,25 +128,25 @@ message back in the network until it reaches its destination.
 
 Incentives
 ~~~~~~~~~~
-A leading principle in the marketplace is that data curators are in charge of 
+A leading principle in the marketplace is that data providers are in charge of 
 the quality and availability of their own data. This greatly simplifies the 
 incentive mechanism and ensures users of the system enjoy better service. As 
-mentioned before, Data curators need to stake tokens on every data-set they 
+mentioned before, Data providers need to stake tokens on every data-set they 
 share. If the data goes offline, or is otherwise corrupt (addressing this is 
 beyond the scope of this post), they will have to pay it from their deposit. 
 Such dishonest actions are likely to reduce the number of subscribers to the 
-data, further decreasing the payoff of the data curator. With the assumption 
-that curators are rational agents who wish to maximize their utility, this 
+data, further decreasing the payoff of the data provider. With the assumption 
+that providers are rational agents who wish to maximize their utility, this 
 ensures their best strategy is to provide quality data and guarantee its 
 availability.
 
-While data curators can construct and serve their data through a local node 
+While data providers can construct and serve their data through a local node 
 acting as a worker and persistence node, they may prefer to outsource these 
-operations to other nodes. This allows data curators to go offline after 
+operations to other nodes. This allows data providers to go offline after 
 registering a new data-set. Worker and persistence nodes are specified as 
 additional payout addresses in the registration transaction (which could be 
-updated by the data curator at any time). This ensures that these nodes remain 
-incentivised to do good work. If the curator wishes to keep all the rewards to 
+updated by the data provider at any time). This ensures that these nodes remain 
+incentivised to do good work. If the provider wishes to keep all the rewards to 
 herself, she can specify her own node(s) as the worker/persistence address.
 
 Data privacy
@@ -156,7 +157,7 @@ over encrypted data, and our goal is to gradually introduce these ideas into our
 protocol.
 
 Initially, we plan to introduce relatively fast deterministic and 
-order-preserving encryption mechanisms, that will enable data curators to 
+order-preserving encryption mechanisms, that will enable data providers to 
 encrypt their data at the source. This presents a fairly good trade-off in 
 practice, that provides adequate security guarantees, although not perfect, as 
 they don’t satisfy indistinguishability against adaptive chosen-plaintext 
