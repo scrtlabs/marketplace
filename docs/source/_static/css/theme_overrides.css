@@ -9,5 +9,6 @@
 
    .wy-table-responsive {
       overflow: visible !important;
+      font-size: 0.9em;
    }
 }
