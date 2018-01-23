@@ -1,20 +1,20 @@
 Data Providers
 ==============
 
-As a data publisher, you can publish your data sources to the Catalyst
+As a data publisher, you can publish your data sets to the Catalyst
 Marketplace and get rewarded in ENG tokens. Providers set the price of their
 data set. The Catalyst Marketplace brokers the transaction using
 smart contract.
 
-Data Sources
-~~~~~~~~~~~~
-A data source may contain any data which fits in a tabular format.
+Data Sets
+~~~~~~~~~
+A data set may contain any data which fits in a tabular format.
 However, since data will be consumed by Catalyst for the purpose of
 algorithmic trading, it must have some predictable properties. In
-particular, each data source must contain these two columns:
+particular, each data set must contain these two columns:
 
 * Date: The date/time of the event corresponding to each row of the
-  data source.
+  data set.
 * Symbol: The symbol of the currency of market associated with each even.
   If an event involves more that one currency or market, multiple entries can
   be provided with a semicolon separator.
@@ -30,11 +30,11 @@ Here are the applicable data type conventions:
 * Numbers: Numbers should be provided as integer or floats without quotes.
   Use as many decimal as necessary.
 
-This sample data source contains market cap information:
+This sample data set contains market cap information:
 
 .. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/csv-example-marketcap.png
     :align: center
-    :alt: Marketcap Data Source Sample CSV
+    :alt: Marketcap Data set Sample CSV
 
 
 Data Frequency and Availability
@@ -61,14 +61,14 @@ source.
       frequency on an ongoing basis?
     * Scheduled holds: A list a dates for scheduled gaps in ongoing data.
 
-Registering Data Sources
-~~~~~~~~~~~~~~~~~~~~~~~~
-To register a new data source, download and install the Catalyst client.
+Registering Data Sets
+~~~~~~~~~~~~~~~~~~~~~
+To register a new data set, download and install the Catalyst client.
 Then, use the `catalyst register-data` command. In this example, data is
 published multiple times per hour at a variable time::
 
     $ catalyst register-data
-    Enter the Data Source name: Test
+    Enter the Data set name: Test
     Enter the data frequency [daily, hourly, minute]: hourly
     Can data be published every hour at a regular time? [default: Y]: N
     At a minimum, how many times per hour will data be published? [default: 1]: 5
@@ -76,12 +76,12 @@ published multiple times per hour at a variable time::
     Please unlock your wallet account to authorize signature.
 
     Signature authorized.
-    New data source: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
+    New data set: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
 
 In the following example, data is published daily on a fixed schedule::
 
     $ catalyst register-data
-    Enter the Data Source name: Test
+    Enter the Data set name: Test
     Enter the data frequency [daily, hourly, minute]: daily
     Can data be published every day at a regular time? [default: Y]: Y
     At what time will the data be published? [default: 0:00]: 0:00
@@ -92,11 +92,11 @@ In the following example, data is published daily on a fixed schedule::
     Please unlock your wallet account to authorize signature.
 
     Signature authorized.
-    New data source: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
+    New data set: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
 
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-To upload data in an registered data source, use the `catalyst publish-data`
+To upload data in an registered data set, use the `catalyst publish-data`
 command::
 
     $ catalyst publish-data --data-source=Test --datadir=~/test-data/
@@ -111,13 +111,13 @@ For illustration, here is our `test-data` directory before running the
 
 .. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-before.png
     :align: center
-    :alt: Test Data Source Folder Before Publish
+    :alt: Test Data set Folder Before Publish
 
 Here is the same directory after successfully publishing the data.
 
 .. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-after.png
     :align: center
-    :alt: Test Data Source Folder After Publish
+    :alt: Test Data set Folder After Publish
 
 The file naming convention is inconsequential, Catalyst will process any
 file with a CSV extension. As long as the data is correctly represented, it
