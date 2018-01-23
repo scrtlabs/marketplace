@@ -25,8 +25,10 @@ Here are the applicable data type conventions:
 * Date/Time: Both date and date/time types are supported. The date fields
   should be represented as String following the ISO 8601 format using the
   appropriate level of precision. Valid examples include:
+
     * "2017-11-01" or "2017-11-1" (for November 1st, 2017)
     * "2017-12-14 23:00" (for December 14th, 2017 at 11:00PM)
+
 * Numbers: Numbers should be provided as integer or floats without quotes.
   Use as many decimal as necessary.
 
@@ -43,6 +45,7 @@ A data frequency and availability must be provided when registering each data
 source.
 
 * Data frequency: How frequently do data events occur?
+
     * Strict daily: Publish one event each day at a set time.
     * Strict hourly: Publish one event each hour between a set range of
       minutes.
@@ -53,10 +56,13 @@ source.
     * At lest each x minutes: Publish one of more events each minute.
 
 * Data Availability: How far back are we getting data?
+
     * Historical range: The data range for historical data. Use multiple date
       ranges if the data does not follow a continuous timeframe.
+
         * Start: Date/time of the first data event of the range.
         * End: Date/time of the last data event of the range.
+        
     * Ongoing: Will data events continue to be published at the specified
       frequency on an ongoing basis?
     * Scheduled holds: A list a dates for scheduled gaps in ongoing data.
