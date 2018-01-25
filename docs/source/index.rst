@@ -15,5 +15,5 @@ Table of Contents
    data-providers
    authentication
    data-sets
-
+   troubleshooting
 
