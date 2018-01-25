@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Enigma Data Marketplace 0.4 documentation</title>
+  <title>Troubleshooting &mdash; Enigma Data Marketplace 0.4 documentation</title>
   
 
   
@@ -32,7 +32,8 @@
   
 
   
-    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/> 
+    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
+        <link rel="prev" title="Data Sets" href="data-sets.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -57,7 +58,7 @@
 
         
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -71,7 +72,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
@@ -113,7 +114,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Troubleshooting</a></li>
 </ul>
 
           
@@ -138,8 +139,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Search</li>
+    <li>Troubleshooting</li>
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/troubleshooting.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
@@ -147,22 +152,40 @@
 </div>
           <div role="main" class="document">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>If you get errors like either one of these:</p>
+<div class="highlight-python"><div class="highlight"><pre>File &quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;, line 7, in &lt;module&gt;
+  from Crypto.Protocol.KDF import scrypt
+ImportError: cannot import name &#39;scrypt&#39;
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>File &quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;, line 5, in &lt;module&gt;
+  from Crypto import Random
+ImportError: cannot import name &#39;Random&#39;
+</pre></div>
+</div>
+<p>Make sure you don&#8217;t have package <code class="docutils literal"><span class="pre">PyCrypto</span></code> installed, which is not
+being maintained currently:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip uninstall pycrypto
+</pre></div>
+</div>
+<p>and it that was the case, reinstall package <code class="docutils literal"><span class="pre">pycryptodome</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip uninstall pycryptodome; pip install pycryptodome
+</pre></div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="data-sets.html" class="btn btn-neutral" title="Data Sets" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -199,7 +222,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -215,14 +237,7 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
