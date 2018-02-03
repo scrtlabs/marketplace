@@ -11,6 +11,7 @@ Table of Contents
 
    introduction
    smart-contract
+   configuration
    data-subscribers
    data-providers
    authentication
