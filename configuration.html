@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Enigma Data Marketplace 0.4 documentation</title>
+  <title>Configuration &mdash; Enigma Data Marketplace 0.4 documentation</title>
   
 
   
@@ -32,7 +32,9 @@
   
 
   
-    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/> 
+    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
+        <link rel="next" title="Data Subscribers" href="data-subscribers.html"/>
+        <link rel="prev" title="Smart Contract" href="smart-contract.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -57,7 +59,7 @@
 
         
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -71,7 +73,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
@@ -92,7 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="smart-contract.html#source-code">Source code</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#subscribe">Subscribe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#ingest">Ingest</a></li>
@@ -139,8 +141,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Search</li>
+    <li>Configuration</li>
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/configuration.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
@@ -148,22 +154,85 @@
 </div>
           <div role="main" class="document">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>In order to use the Enigma Data Marketplace, you will need to configure Catalyst
+to use an Ethereum account of yours. Please note that Catalyst will <strong>NEVER
+handle your private key</strong>, you only need to configure your public address.</p>
+<p>The first time that you run any Catalyst command on the marketplace, you&#8217;ll get
+an error like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ catalyst marketplace {command}
+MarketplacePubAddressEmpty:  Please enter your public address to use in the
+Data Marketplace in the following file: $HOME/.catalyst/data/marketplace/addresses.json
+</pre></div>
+</div>
+<p>This creates an empty JSON file in the above location for you to edit and
+specify which address you want to use. This is what the initial empty file looks
+like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;pubAddr&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;desc&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Which you would edit as follows using your public address:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;pubAddr&quot;</span><span class="p">:</span><span class="s">&quot;0x4A68d69d6BE0f7F429aBFb07eA98caE2093F6896&quot;</span><span class="p">,</span>
+        <span class="s">&quot;desc&quot;</span><span class="p">:</span><span class="s">&quot;My Hardware Wallet &quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">pubAddr</span></code> is a required field where you set the Ethereum public address
+that you want to use with Catalyst, and the <code class="docutils literal"><span class="pre">desc</span></code> field is optional, in case
+you have multiple addresses and you want to easily distinguish between them.
+Should you want to configure multiple addresses, the file would like something
+like the example below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;pubAddr&quot;</span><span class="p">:</span><span class="s">&quot;0x4A68d69d6BE0f7F429aBFb07eA98caE2093F6896&quot;</span><span class="p">,</span>
+        <span class="s">&quot;desc&quot;</span><span class="p">:</span><span class="s">&quot;My first address&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">&quot;pubAddr&quot;</span><span class="p">:</span><span class="s">&quot;0x3341436363A8343571a643dB3De216c8842D2dC4&quot;</span><span class="p">,</span>
+        <span class="s">&quot;desc&quot;</span><span class="p">:</span><span class="s">&quot;My second address&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Now when you invoke any of the <code class="docutils literal"><span class="pre">catalyst</span> <span class="pre">marketplace</span></code> commands, if you have
+only configured one address (the most likely case), Catalyst will inform you
+that it will use that address for any transaction that you execute:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ catalyst marketplace {command}
+Using 0x4A68d69d6BE0f7F429aBFb07eA98caE2093F6896 for this transaction.
+...
+</pre></div>
+</div>
+<p>Instead, if you have configured multiple addresses, it will prompt you to choose
+which one of them you want to use for the command you are executing:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ catalyst marketplace {command}
+0   0x4A68d69d6BE0f7F429aBFb07eA98caE2093F6896  My first address
+1   0x3341436363A8343571a643dB3De216c8842D2dC4  My second address
+Choose your address associated with this transaction: [default: 0]
+</pre></div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data-subscribers.html" class="btn btn-neutral float-right" title="Data Subscribers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="smart-contract.html" class="btn btn-neutral" title="Smart Contract" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -200,7 +269,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -216,14 +284,7 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
