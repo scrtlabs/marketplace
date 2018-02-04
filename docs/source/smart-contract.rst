@@ -60,7 +60,7 @@ desired data set through a two-step process:
    spender in the Enigma ERC20 contract on their behalf for the
    specified amount for that data set.
 
-3. Once the Marketplace contract has been approved, a user can send a 
+2. Once the Marketplace contract has been approved, a user can send a 
    subscription transaction that includes the desired data source name. The
    price is specified in the data set (stored in the marketplace contract), and
    the amount is transferred on behalf of the user (after the pre-approval 
@@ -77,7 +77,7 @@ desired data set through a two-step process:
     :alt: Enigma Data Marketplace withdraw
 
 The Marketplace contract main functionality
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The full API documentation can be found in the Github repository inside the ``IBasicMarketplace.sol`` and ``IMarketplace.sol`` at:
 `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol>`_
@@ -85,20 +85,65 @@ The full API documentation can be found in the Github repository inside the ``IB
 
 Enigma's Data Marketplace provides the following functionality.
  
-subscribe(bytes32 sourceName)
-*****************************
+Subscriber related functions 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+subscribe(bytes32 sourceName):bool
+***********************************
 
 Subscribes to a data source after approving the marketplace contract in 
 the ENG token contract as a spender on behalf of the subscriber. The amount
 of ENG available on the subscriber's address should be equal or larger than the
 price of the desired data set.
 
+refundSubscriber(bytes32 dataName):bool
+**************************************************************
+The following method will create a refund transaction and return the relative amount back to the subscriber if the data curator was punished sometime during the subscription time.
+Refund is calculated using that formula:
+``PRICE - [(punishTime- startTime) * PRICE / (endTime - startTime)]``.
 
-register(bytes32 sourceName, uint price, address owner)
-*******************************************************
+Data curator related functions 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+register(bytes32 sourceName, uint price, address owner):bool
+*************************************************************
 
 Registers a new data source. ``sourceName`` must be unique, and ``price`` is
 designated in ENG Tokens for a monthly subscription.
+
+withdrawProvider(bytes32 dataName):bool
+**************************************************************
+
+Will create a withdraw transactions and `transfer` all the `ENG` tokens to the owner address for each subscription that belongs to the data curator and not paid yet.
+It will ignore subscriptions that are not expired yet and calculate the relative time amount in case the curator is punished with that formula:
+``(punishTime- startTime) * PRICE / (endTime - startTime)``.
+
+updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool
+************************************************************************************
+
+| Update a data curator price, applies for all of the future subscriptions and can be used only by the `data owner`.
+
+changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool
+*******************************************************************************
+
+| Update the ``data source`` activity status, applies for all of the future subscriptions. 
+| ``_isActive=false`` means that the data source is offline for some reason. ``True`` by default.
+
+General public functions 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+getDataProviderInfo(bytes32 dataName):Provider
+**************************************************************
+
+Given a data curator name, returns the following details of the provider's status
+
+* address owner 
+* uint256 price
+* uint256 volume
+* uint256 subscriptionsNumber
+* bool isProvider
+* bool isActive
+* bool isPunished
 
 checkAddressSubscription(address subscriber, bytes32 dataName)
 **************************************************************
@@ -116,49 +161,121 @@ details of the user's subscription to that data set
 * bool punishedProvider
 * bool isOrder
 
-getDataProviderInfo(bytes32 dataName)
-**************************************************************
+getAllProviders():bytes32[]
+******************************
 
-Given a data curator name, returns the following details of the provider's status
-
-* address owner 
-* uint256 price
-* uint256 volume
-* uint256 subscriptionsNumber
-* bool isProvider
-* bool isActive
-* bool isPunished
-
-getAllProviders()
-**************************************************************
-
-Returns a full list of all the data curators names, the first value is `0x0` a name representing the beginning of the list. 
-
-refundSubscriber(bytes32 dataName)
-**************************************************************
-The following method will create a refund transaction and return the relative amount back to the subscriber if the data curator was punished sometime during the subscription time.
-Refund is calculated using that formula:
-``PRICE - [(punishTime- startTime) * PRICE / (endTime - startTime)]``.
-
-
-withdrawProvider(bytes32 dataName)
-**************************************************************
-
-Will create a withdraw transactions and `transfer` all the `ENG` tokens to the owner address for each subscription that belongs to the data curator and not paid yet.
-It will ignore subscriptions that are not expired yet and calculate the relative time amount in case the curator is punished with that formula:
-``(punishTime- startTime) * PRICE / (endTime - startTime)``.
+Returns a full list of all the data curators names in a hex format, the first value is `0x0` a name representing the beginning of the list. 
 
 getWithdrawAmount(bytes32 dataName)
 **************************************************************
 Accessible by anyone, calculate the available withdraw amount of a data curator.
 
-
-getRefundAmount(address subscriber, bytes32 dataName)
+getRefundAmount(address subscriber, bytes32 dataName):uint
 **************************************************************
 
-Accessible by anyone, calculate the available refund amount of a subscriber to some data set.
+| Accessible by anyone, calculate the available refund amount of a subscriber to some data set.
+
+isActiveDataSource(bytes32 dataName):bool
+*******************************************
+
+| Indicates whether the data curator is active.
 
 
+isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool
+***************************************************************************
+
+| Indicates whether a subscription is expired (True).
+
+Marketplace owner only related functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+setPunishProvider(bytes32 dataName, bool _isPunished):bool
+************************************************************
+
+| Set a punishment status transaction to a data curator. Can be set only by the Marketplace contract owner.
+| If ``_isPunished`` equals to ``True`` the data curator will be punished otherwise "un-punished".
+
+
+The Marketplace contract Event types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);
+**********************************************************************************************************
+
+| @dev When data provider finishes registration in the contract
+| @param dataOwner the owner of the data
+| @param dataSourceName the new name registred
+| @param price the price for subscription
+| @param true if registred successfully
+
+
+event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);
+**********************************************************************************************************
+
+| @dev an event that indicates that someone has paid the Marketplace contract subscription (before that data is updated in the contract)
+| @param from who paid
+| @param to the data source owner
+| @param value the value that was transfered
+
+
+event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);
+**********************************************************************************************************
+
+| @dev an event fired every time subscription has finished (AFTER succssfull payment AND data update).
+| @param subscriber who subscribed
+| @param dataSourceName the data source name
+| @param dataOwner the owner of the data source
+| @param price the price paid for subscription
+| @param success true if subscribed successfully
+
+event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);
+**********************************************************************************************************
+
+| @dev triggerd upon a token transfer to provider (before finishing state update)
+| @param dataOwner - the owner that got paid 
+| @param dataSourceName - the name of the data source
+| @param amount - the amount transferd from the marketplace contract to the provider
+
+event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);
+**********************************************************************************************************
+
+| @dev triggerd when the provider finished the withdraw (TransferToProvider event + state update)
+| @param dataOwner - the owner that withdrawed
+| @param dataSourceName - name of the data source
+| @param amount - the amount withdrawed
+
+event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);
+**********************************************************************************************************
+
+| @dev triggerd when punishment status changed (true = punished, false = not punished)
+| @param dataOwner - the provider 
+| @param dataSourceName - the name of the data source 
+| @param isPunished - the status current status AFTER the change
+
+event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);
+**********************************************************************************************************
+
+| @dev triggerd when the subscriber got a refund (punished provider)
+| @param subscriber - the refunded address
+| @param dataSourceName - name of the data source
+| @param amount - the amount of the refund
+
+event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);
+**********************************************************************************************************
+
+| @dev triggerd uppon a price change of an existing data source
+| @param editor the owner that changed the price
+| @param dataSourceName the data source that has changed
+| @param newPrice the new price.
+
+
+event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);
+**********************************************************************************************************
+
+| @dev triggerd upon a change in the state of a data source availablity.
+| @param editor who changed the activity state
+| @param dataSourceName which dataSource changed. 
+| @param newStatus true = active, false = not active (cannot be sold)
 
 
 Source code
