@@ -141,7 +141,7 @@ To register a new data set, download and install the Catalyst client.
 Then, use the ``catalyst register-data`` command. In this example, data is
 published multiple times per hour at a variable time:
 
-.. code:: bash
+.. code-block:: bash
 
     $ catalyst register-data
     Enter the Data set name: Test
@@ -154,7 +154,9 @@ published multiple times per hour at a variable time:
     Signature authorized.
     New data set: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
 
-In the following example, data is published daily on a fixed schedule::
+In the following example, data is published daily on a fixed schedule:
+
+.. code-block:: bash
 
     $ catalyst register-data
     Enter the Data set name: Test
@@ -173,7 +175,9 @@ In the following example, data is published daily on a fixed schedule::
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 To upload data in an registered data set, use the `catalyst publish-data`
-command::
+command:
+
+.. code-block:: bash
 
     $ catalyst publish-data --data-source=Test --datadir=~/test-data/
 
@@ -207,7 +211,9 @@ Publishing Live Data
 Publishing live data works similarly to publishing historical data
 except that Catalyst will watch the `datadir` and try to publish new data in
 new or modified CSV files. To publish live data, simply add a the `watch`
-parameter to the 'publish-data` command::
+parameter to the 'publish-data` command:
+
+.. code-block:: bash
 
     $ catalyst publish-data --dataset=Test --datadir=~/test-data/ --watch
 
