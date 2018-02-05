@@ -17,7 +17,7 @@ their subscription.
 
 The following command subscribes to the Marketcap data set:
 
-.. code:: bash
+.. code-block:: bash
 
     $ catalyst subscribe-data --dataset=Marketcap
     Subscribing to the Marketcap data set published by Enigma.
@@ -39,6 +39,7 @@ The following command subscribes to the Marketcap data set:
     0x627306090abab3a6e1400e9345bc60c78a8bef57 successfully subscribed to
     Marketcap for 1ENG
 
+
 Ingest
 ~~~~~~
 The Catalyst ``ingest-data`` command makes the specified portion of a data set 
@@ -48,11 +49,12 @@ This commands ingests all the data available in the Marketcap data set.
 If the data takes a long time to download and you only need a subset,
 use the command parameters to filter by date:
 
-.. code:: bash
+.. code-block:: bash
 
     $ catalyst ingest-data --dataset=Marketcap
     Ingesting data set Marketcap...
     [=                                   ]  Ingesting daily data for Marketcap:    4%  00:02:43
+
 
 The progress bar will dynamically update until completion.
 
@@ -65,7 +67,7 @@ This snippet of code below shows how to use our Marketcap data set in the
 `initialize()` function of an algorithm to rank the top-five asset by
 market cap:
 
-.. code:: python
+.. code-block:: python
 
     def initialize(context):
         # Get the marketcap data
