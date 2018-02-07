@@ -1,4 +1,4 @@
-.. image:: https://s3.amazonaws.com/enigmaco-docs/enigma-marketplace.jpg
+.. image:: https://s3.amazonaws.com/enigmaco-docs/enigma-marketplace.png
     :target: https://enigmampc.github.io/marketplace
     :align: center
     :alt: Enigma | Marketplace
