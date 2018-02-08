@@ -87,10 +87,10 @@ desired dataset through a two-step process:
 The Marketplace contract main functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The full API documentation can be found in the Github repository inside the 
-``IBasicMarketplace.sol`` and ``IMarketplace.sol`` contracts at:
-`<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol>`_
-`<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IMarketplace.sol>`_
+.. The full API documentation can be found in the Github repository inside the 
+.. ``IBasicMarketplace.sol`` and ``IMarketplace.sol`` contracts at:
+.. `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol>`_
+.. `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IMarketplace.sol>`_
 
 Enigma's Data Marketplace provides the following functionality.
  
@@ -322,9 +322,9 @@ event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, boo
 	@param newStatus true = active, false = not active (cannot be sold)
 
 
-Source code
-~~~~~~~~~~~
+.. Source code
+.. ~~~~~~~~~~~
 
-The soure code for the smart contract is available at: 
-`<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/Marketplace.sol>`_
+.. The soure code for the smart contract is available at: 
+.. `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/Marketplace.sol>`_
 
