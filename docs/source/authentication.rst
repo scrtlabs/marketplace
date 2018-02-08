@@ -145,7 +145,7 @@ in this section is the following:
 
 	        return pubAddr.lower() == auth.username.lower()
 
-The source code for the digest authentication server is available at:
-https://github.com/enigmampc/marketplace-authentication 
+.. The source code for the digest authentication server is available at:
+.. https://github.com/enigmampc/marketplace-authentication 
 
 
