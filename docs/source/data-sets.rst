@@ -1,8 +1,8 @@
 Data Sets
 =========
 
-These are the available data sets currently available on the Enigma Data 
-Marketplace. 
+These datasets will become available as we launch the Enigma Data Marketplace 
+on the Ethereum mainnet: 
 
 +-----------------+---------------------------+-------+------------+---------+-------------+
 | Data Set        | Description               | Price | Start      | Active  | Frequency   |
