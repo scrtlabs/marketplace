@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="next" title="Server-side Authentication" href="authentication.html"/>
         <link rel="prev" title="Data Subscribers" href="data-subscribers.html"/> 
@@ -90,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Data Providers</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Providers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#data-sets">Data Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-frequency-and-availability">Data Frequency and Availability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#registering-data-sets">Registering Data Sets</a></li>
@@ -151,7 +154,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/data-providers.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/data-providers.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,7 +172,7 @@
 <p>As a data provider, you can publish your data sets to the Enigma Data
 Marketplace and get rewarded in ENG tokens. As a provider, you set the price of
 your data sets for monthly subscriptions. The Enigma Data Marketplace is
-governed by a <a class="reference internal" href="smart-contract.html"><em>smart contract</em></a> that brokers all the
+governed by a <a class="reference internal" href="smart-contract.html"><span class="doc">smart contract</span></a> that brokers all the
 transactions in the marketplace.</p>
 <div class="section" id="data-sets">
 <h2>Data Sets<a class="headerlink" href="#data-sets" title="Permalink to this headline">¶</a></h2>
@@ -193,8 +196,8 @@ should be represented as a <em>String</em> following the <em>ISO 8601</em> forma
 appropriate level of precision. Valid examples include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>&#8220;2017-11-01&#8221; or &#8220;2017-11-1&#8221; (for November 1st, 2017)</li>
-<li>&#8220;2017-12-14 23:00&#8221; (for December 14th, 2017 at 11:00PM)</li>
+<li>“2017-11-01” or “2017-11-1” (for November 1st, 2017)</li>
+<li>“2017-12-14 23:00” (for December 14th, 2017 at 11:00PM)</li>
 </ul>
 </div></blockquote>
 </li>
@@ -374,7 +377,7 @@ It does not roll-back the files already published.</p>
 <p>Publishing live data works similarly to publishing historical data
 except that Catalyst will watch the <cite>datadir</cite> and try to publish new data in
 new or modified CSV files. To publish live data, simply add a the <cite>watch</cite>
-parameter to the &#8216;publish-data` command:</p>
+parameter to the ‘publish-data` command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst publish-data --dataset<span class="o">=</span>Test --datadir<span class="o">=</span>~/test-data/ --watch
 </pre></div>
 </div>
@@ -429,7 +432,7 @@ parameter to the &#8216;publish-data` command:</p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

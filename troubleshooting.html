@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="prev" title="Data Sets" href="data-sets.html"/> 
 
@@ -92,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
 </ul>
 
             
@@ -143,7 +146,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/troubleshooting.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/troubleshooting.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,23 +162,23 @@
   <div class="section" id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
 <p>If you get errors like either one of these:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>File &quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;, line 7, in &lt;module&gt;
-  from Crypto.Protocol.KDF import scrypt
-ImportError: cannot import name &#39;scrypt&#39;
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="kn">from</span> <span class="nn">Crypto.Protocol.KDF</span> <span class="kn">import</span> <span class="n">scrypt</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">cannot</span> <span class="kn">import</span> <span class="nn">name</span> <span class="s1">&#39;scrypt&#39;</span>
 </pre></div>
 </div>
-<div class="code bash highlight-python"><div class="highlight"><pre><span></span>File &quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;, line 5, in &lt;module&gt;
-  from Crypto import Random
-ImportError: cannot import name &#39;Random&#39;
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="kn">from</span> <span class="nn">Crypto</span> <span class="kn">import</span> <span class="n">Random</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">cannot</span> <span class="kn">import</span> <span class="nn">name</span> <span class="s1">&#39;Random&#39;</span>
 </pre></div>
 </div>
-<p>Make sure you don&#8217;t have package <code class="docutils literal"><span class="pre">PyCrypto</span></code> installed, which is not
+<p>Make sure you don’t have package <code class="docutils literal"><span class="pre">PyCrypto</span></code> installed, which is not
 being maintained currently:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip uninstall pycrypto
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">pycrypto</span>
 </pre></div>
 </div>
 <p>and it that was the case, reinstall package <code class="docutils literal"><span class="pre">pycryptodome</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip uninstall pycryptodome; pip install pycryptodome
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">pycryptodome</span><span class="p">;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycryptodome</span>
 </pre></div>
 </div>
 </div>
@@ -226,7 +229,7 @@ being maintained currently:</p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

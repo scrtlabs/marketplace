@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="next" title="Configuration" href="configuration.html"/>
         <link rel="prev" title="Introduction" href="introduction.html"/> 
@@ -87,7 +90,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Smart Contract</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Contract</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subscription">Subscription</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
@@ -187,7 +190,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/smart-contract.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/smart-contract.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -210,7 +213,7 @@ subscribe to existing data sets. The subscription period defaults to
 costs.</p>
 <p>The Enigma Data Marketplace contract is publicly available and can be used by
 any other contract in the network. The smart contract stores each of the data
-sets metadata (owner, price, number of subscriptions,...) and information about
+sets metadata (owner, price, number of subscriptions,…) and information about
 each subscription to any data set (price, start time and end time).</p>
 <div class="section" id="registration">
 <h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
@@ -225,7 +228,7 @@ with the following details:</p>
 <li><p class="first"><strong>Datasource name</strong></p>
 <blockquote>
 <div><p>Data source names are strings that must be unique, and will be converted
-to lowercase. The name can be any string as long as it doesn&#8217;t exist in the
+to lowercase. The name can be any string as long as it doesn’t exist in the
 contract registry already and its length is less than 32 bytes.</p>
 </div></blockquote>
 </li>
@@ -237,14 +240,14 @@ contract registry already and its length is less than 32 bytes.</p>
 <li><p class="first"><strong>Datasource owner:</strong></p>
 <blockquote>
 <div><p>The address of the owner of the data source. This address is where the
-payments from the users&#8217; subscriptions to this data source will be sent to.
-The owner&#8217;s address also allows for changing the monthly price (does not
+payments from the users’ subscriptions to this data source will be sent to.
+The owner’s address also allows for changing the monthly price (does not
 affect active subscriptions, only new subscriptions and renewals), and
 deactivating a dataset.</p>
 </div></blockquote>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Withdrawing owner&#8217;s tokens:</strong></dt>
+<dt><strong>Withdrawing owner’s tokens:</strong></dt>
 <dd><p class="first last">The withdraw protocol.</p>
 </dd>
 </dl>
@@ -260,7 +263,7 @@ Subscription is expired or the Data curator is punished (should their data stop
 being available). In case the data provider was punished then and only then,
 the subscriber will able to ask for a <code class="docutils literal"><span class="pre">refund</span></code>. The refund is prorated on the
 fraction of the monthly subscription when the data was available, and will be
-deposited back to the subscriber&#8217;s address.</p>
+deposited back to the subscriber’s address.</p>
 <p>In order to access an existing dataset, a user needs to subscribe to the
 desired dataset through a two-step process:</p>
 <ol class="arabic simple">
@@ -281,7 +284,7 @@ from step #1 above succeeds).</li>
 </div>
 <div class="section" id="the-marketplace-contract-main-functionality">
 <h2>The Marketplace contract main functionality<a class="headerlink" href="#the-marketplace-contract-main-functionality" title="Permalink to this headline">¶</a></h2>
-<p>Enigma&#8217;s Data Marketplace provides the following functionality.</p>
+<p>Enigma’s Data Marketplace provides the following functionality.</p>
 </div>
 <div class="section" id="subscriber-related-functions">
 <h2>Subscriber related functions<a class="headerlink" href="#subscriber-related-functions" title="Permalink to this headline">¶</a></h2>
@@ -289,7 +292,7 @@ from step #1 above succeeds).</li>
 <h3>subscribe(bytes32 sourceName):bool<a class="headerlink" href="#subscribe-bytes32-sourcename-bool" title="Permalink to this headline">¶</a></h3>
 <p>Subscribes to a data source after approving the marketplace contract in
 the ENG token contract as a spender on behalf of the subscriber. The amount
-of ENG available on the subscriber&#8217;s address should be equal or larger than the
+of ENG available on the subscriber’s address should be equal or larger than the
 price of the desired dataset.</p>
 </div>
 <div class="section" id="refundsubscriber-bytes32-dataname-bool">
@@ -336,7 +339,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 <h2>General public functions<a class="headerlink" href="#general-public-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="getdataproviderinfo-bytes32-dataname-provider">
 <h3>getDataProviderInfo(bytes32 dataName):Provider<a class="headerlink" href="#getdataproviderinfo-bytes32-dataname-provider" title="Permalink to this headline">¶</a></h3>
-<p>Given a dataset name, returns the following details of the provider&#8217;s status:</p>
+<p>Given a dataset name, returns the following details of the provider’s status:</p>
 <ul class="simple">
 <li>address owner</li>
 <li>uint256 price</li>
@@ -350,7 +353,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 <div class="section" id="checkaddresssubscription-address-subscriber-bytes32-dataname">
 <h3>checkAddressSubscription(address subscriber, bytes32 dataName)<a class="headerlink" href="#checkaddresssubscription-address-subscriber-bytes32-dataname" title="Permalink to this headline">¶</a></h3>
 <p>Given a subscriber address and an existing dataset, returns the following
-details of the user&#8217;s subscription to that dataset:</p>
+details of the user’s subscription to that dataset:</p>
 <ul class="simple">
 <li>address subscriber</li>
 <li>bytes32 dataName</li>
@@ -533,7 +536,7 @@ punished.</p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
