@@ -88,9 +88,10 @@ The Marketplace contract main functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The full API documentation can be found in the Github repository inside the 
-``IBasicMarketplace.sol`` and ``IMarketplace.sol`` contracts at:
+``IBasicMarketplace.sol``, ``IMarketplace.sol`` and ``IRecoverableMarketplace.sol`` contracts at:
 `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol>`_
 `<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IMarketplace.sol>`_
+`<https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IRecoverableMarketplace.sol>`_
 
 Enigma's Data Marketplace provides the following functionality.
  
@@ -220,6 +221,58 @@ setPunishProvider(bytes32 dataName, bool _isPunished):bool
 Set a punishment status transaction to a dataset. Can be set only by the 
 Marketplace contract owner. If ``_isPunished`` is ``True`` the daset will be 
 punished.
+
+Marketplace functionallity with loops outside the chain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes, calculations and loops want to be done outside the chain.
+
+refundSubscriberAt(bytes32 dataName, uint256 _index):bool
+**********************************************************
+Allowed only by the subscriber otherwise will throw.
+
+getRefundAmountAt(bytes32 dataName,uint256 _index):uint
+**********************************************************
+Get the refund of a subscription amount from a data curator
+
+getSubscriptionsSize(bytes32 dataName):uint
+**********************************************************
+Get the number of subscriptions given a data curator.
+
+checkSubscriptionAt(bytes32 dataName, uint256 _index)
+**********************************************************
+Get subscriptions information in the following order: 
+
+* address subscriber
+* bytes32 dataSourceName
+* uint price
+* uint startTime
+* uint endTime
+* bool isUnExpired
+* bool isPaid
+* bool isPunishedProvider
+* bool isOrder
+
+isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool
+**************************************************************
+``True`` = Expired, ``False`` = Not expired.
+
+withrawProviderAt(bytes32 dataName, uint256 _index):bool
+**********************************************************
+Allowed only be the data curator otherwise throws.
+
+getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint
+***********************************************************
+Get the withdraw amount of some data curator at subscription 'i'.
+
+getProviderNamesSize():uint
+**********************************************************
+Get the number of all the existing data curators.
+
+getNameAt(uint256 _index):bytes32
+**********************************************************
+Get the ``name=id`` of a data curator at index (0,...,size);
+
 
 
 The Marketplace contract Event types
