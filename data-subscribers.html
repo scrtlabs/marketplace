@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -34,9 +32,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="next" title="Data Providers" href="data-providers.html"/>
         <link rel="prev" title="Configuration" href="configuration.html"/> 
@@ -48,28 +43,21 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+      <div class="wy-side-nav-search">
+        
 
-          
-            <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
-          
+        
+          <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
+        
 
-          
-          </a>
+        
+        </a>
 
-          
-            
-            
-          
-
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -78,92 +66,138 @@
   </form>
 </div>
 
-          
-        </div>
+        
+      </div>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
           
-            
-            
-              
-            
-            
+          
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscription">Subscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscriber-related-functions">Subscriber related functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#subscribe-bytes32-sourcename-bool">subscribe(bytes32 sourceName):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriber-bytes32-dataname-bool">refundSubscriber(bytes32 dataName):bool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#data-curator-related-functions">Data curator related functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#register-bytes32-sourcename-uint-price-address-owner-bool">register(bytes32 sourceName, uint price, address owner):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withdrawprovider-bytes32-dataname-bool">withdrawProvider(bytes32 dataName):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#updatedatasourceprice-bytes32-dataname-uint256-newprice-bool">updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#general-public-functions">General public functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getdataproviderinfo-bytes32-dataname-provider">getDataProviderInfo(bytes32 dataName):Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getallproviders-bytes32">getAllProviders():bytes32[]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamount-bytes32-dataname">getWithdrawAmount(bytes32 dataName)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamount-address-subscriber-bytes32-dataname-uint">getRefundAmount(address subscriber, bytes32 dataName):uint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isactivedatasource-bytes32-dataname-bool">isActiveDataSource(bytes32 dataName):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscription-address-subscriber-bytes32-datasourcename-bool">isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-owner-only-related-functions">Marketplace owner only related functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#setpunishprovider-bytes32-dataname-bool-ispunished-bool">setPunishProvider(bytes32 dataName, bool _isPunished):bool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-functionallity-with-loops-outside-the-chain">Marketplace functionallity with loops outside the chain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriberat-bytes32-dataname-uint256-index-bool">refundSubscriberAt(bytes32 dataName, uint256 _index):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamountat-bytes32-dataname-uint256-index-uint">getRefundAmountAt(bytes32 dataName,uint256 _index):uint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getsubscriptionssize-bytes32-dataname-uint">getSubscriptionsSize(bytes32 dataName):uint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checksubscriptionat-bytes32-dataname-uint256-index">checkSubscriptionAt(bytes32 dataName, uint256 _index)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withrawproviderat-bytes32-dataname-uint256-index-bool">withrawProviderAt(bytes32 dataName, uint256 _index):bool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamountat-bytes32-dataname-uint256-index-uint">getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getprovidernamessize-uint">getProviderNamesSize():uint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getnameat-uint256-index-bytes32">getNameAt(uint256 _index):bytes32</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-event-types">The Marketplace contract Event types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#source-code">Source code</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Subscribers</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Data Subscribers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#subscribe">Subscribe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ingest">Ingest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-in-an-algorithm">Use in an Algorithm</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-sets">Data Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-frequency-and-availability">Data Frequency and Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#registering-data-sets">Registering Data Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-historical-data">Publishing Historical Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-live-data">Publishing Live Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#signature-implementation">Signature Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#supported-wallets">Supported Wallets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#source-code">Source Code</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
-            
           
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Enigma Data Marketplace</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Enigma Data Marketplace</a>
       </nav>
 
 
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Data Subscribers</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Data Subscribers</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="_sources/data-subscribers.rst.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/data-subscribers.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main" class="document">
             
   <div class="section" id="data-subscribers">
 <h1>Data Subscribers<a class="headerlink" href="#data-subscribers" title="Permalink to this headline">¶</a></h1>
@@ -175,32 +209,21 @@ data sets may be usable for backtesting as well as live trading.</p>
 <p>The Enigma Data Marketplace enables data providers to publish data sets and make
 them directly available to subscribers. All published data is validated and
 hosted on the Enigma Data Marketplace. Your subscription payment is protected
-by the <a class="reference internal" href="smart-contract.html"><span class="doc">Enigma Data Marketplace Smart Contract</span></a>. If a
+by the <a class="reference internal" href="smart-contract.html"><em>Enigma Data Marketplace Smart Contract</em></a>. If a
 provider stops delivering data as per their agreement, the subscriber will be
 automatically refunded on a <em>pro rata</em> basis for the unfulfilled portion of
 their subscription.</p>
 <p>The following command subscribes to the Marketcap data set:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst subscribe-data --dataset=Marketcap
-Subscribing to the Marketcap data set published by Enigma.
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>catalyst marketplace subscribe --dataset<span class="o">=</span><span class="nb">test</span>
 
-Terms:
-    * New data published once per day at exactly 0:00
-    * Daily historical data available between:
-        * 2017-01-01 to 2018-01-21
-    * Subscription price 1ENG/month
-    * Subscribing for 1 month: 2017-01-22 to 2017-02-22
-    * Today&#39;s Deposit: 1ENG
-    * The entire 1ENG deposit will be transferred to Enigma on 2017-02-22
-      upon completion of these terms.
-
-Agree to subscribe to Marketcap for 1ENG? [N] Y
-Please unlock your wallet account to authorize signature.
-
-Signature authorized.
-0x627306090abab3a6e1400e9345bc60c78a8bef57 successfully subscribed to
-Marketcap for 1ENG
+The price <span class="k">for</span> a monthly subscription to this dataset is <span class="m">10</span> ENG
+Checking that the ENG balance in 0x..... is greater than <span class="m">10</span> ENG... OK.
+Please confirm that you agree to pay <span class="m">10</span> ENG <span class="k">for</span> a monthly subscription to the dataset <span class="s2">&quot;test&quot;</span> starting today. <span class="o">[</span>default: Y<span class="o">]</span>
+Ready to subscribe to dataset test.
 </pre></div>
 </div>
+<p>Catalyst will then provide you with instructions to sign two different
+transactions to process your subscription to the dataset.</p>
 </div>
 <div class="section" id="ingest">
 <h2>Ingest<a class="headerlink" href="#ingest" title="Permalink to this headline">¶</a></h2>
@@ -209,9 +232,9 @@ available locally for backtesting with Catalyst.</p>
 <p>This commands ingests all the data available in the Marketcap data set.
 If the data takes a long time to download and you only need a subset,
 use the command parameters to filter by date:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst ingest-data --dataset<span class="o">=</span>Marketcap
-Ingesting data <span class="nb">set</span> Marketcap...
-<span class="o">[=</span>                                   <span class="o">]</span>  Ingesting daily data <span class="k">for</span> Marketcap:    <span class="m">4</span>%  <span class="m">00</span>:02:43
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>catalyst marketplace ingest --dataset<span class="o">=</span>Marketcap
+Ingesting data <span class="nb">set </span>Marketcap...
+<span class="o">[=</span>                                   <span class="o">]</span>  Ingesting daily data <span class="k">for</span> Marketcap:    4%  00:02:43
 </pre></div>
 </div>
 <p>The progress bar will dynamically update until completion.</p>
@@ -223,39 +246,39 @@ appropriate, the data source is now usable in your algorithms.</p>
 <p>This snippet of code below shows how to use our Marketcap data set in the
 <cite>initialize()</cite> function of an algorithm to rank the top-five asset by
 market cap:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="c1"># Get the marketcap data</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c"># Get the marketcap data</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span>
-        <span class="s1">&#39;marketcap&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">datetime</span>
-    <span class="p">)</span>  <span class="c1"># type: pd.DataFrame</span>
+        <span class="s">&#39;marketcap&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="p">)</span>  <span class="c"># type: pd.DataFrame</span>
 
-    <span class="c1"># Keep only the 100 top currencies by market cap</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">100</span><span class="p">))]</span>
-    <span class="c1"># Sort the currencies by market cap</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;market_cap_usd&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Keep only the 100 top currencies by market cap</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">100</span><span class="p">))]</span>
+    <span class="c"># Sort the currencies by market cap</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-    <span class="c1"># Prepare the standard output for a wide DataFrame</span>
+    <span class="c"># Prepare the standard output for a wide DataFrame</span>
     <span class="n">set_print_settings</span><span class="p">()</span>
-    <span class="c1"># Display the top 100 largest currencies</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;the marketplace data:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="c"># Display the top 100 largest currencies</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;the marketplace data:</span><span class="se">\n</span><span class="s">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 
-    <span class="c1"># Out of the 100 largest currencies, we want to trade the smallest</span>
-    <span class="c1"># 5 markets with an Ether quote on the exchange of our algorithm</span>
-    <span class="n">quote_currency</span> <span class="o">=</span> <span class="s1">&#39;eth&#39;</span>
+    <span class="c"># Out of the 100 largest currencies, we want to trade the smallest</span>
+    <span class="c"># 5 markets with an Ether quote on the exchange of our algorithm</span>
+    <span class="n">quote_currency</span> <span class="o">=</span> <span class="s">&#39;eth&#39;</span>
     <span class="n">exchange</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">exchanges</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">exchanges</span><span class="p">))]</span>
-    <span class="c1"># Get a list of symbols only for assets tradable since the start</span>
-    <span class="c1"># date of our algorithm.</span>
+    <span class="c"># Get a list of symbols only for assets tradable since the start</span>
+    <span class="c"># date of our algorithm.</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">symbol</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">exchange</span><span class="o">.</span><span class="n">assets</span>
                <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">start_date</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">.</span><span class="n">datetime</span><span class="p">]</span>
 
-    <span class="c1"># Initialize an asset list which we will populate with the 5 smallest</span>
-    <span class="c1"># markets</span>
+    <span class="c"># Initialize an asset list which we will populate with the 5 smallest</span>
+    <span class="c"># markets</span>
     <span class="n">context</span><span class="o">.</span><span class="n">assets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">currency</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">currency</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;market_cap_usd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">assets</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
             <span class="k">break</span>
 
-        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{}_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">currency</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">quote_currency</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s">&#39;{}_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">currency</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">quote_currency</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
             <span class="n">context</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 </pre></div>
@@ -264,19 +287,15 @@ market cap:</p>
 </div>
 
 
-           </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="data-providers.html" class="btn btn-neutral float-right" title="Data Providers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data-providers.html" class="btn btn-neutral float-right" title="Data Providers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -286,10 +305,9 @@ market cap:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2018, Enigma MPC, Inc..
-
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 
 </footer>
 
@@ -310,8 +328,7 @@ market cap:</p>
             VERSION:'0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

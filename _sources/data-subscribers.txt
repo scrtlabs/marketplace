@@ -19,26 +19,15 @@ The following command subscribes to the Marketcap data set:
 
 .. code-block:: bash
 
-    $ catalyst subscribe-data --dataset=Marketcap
-    Subscribing to the Marketcap data set published by Enigma.
+    $ catalyst marketplace subscribe --dataset=test
+    
+    The price for a monthly subscription to this dataset is 10 ENG
+    Checking that the ENG balance in 0x..... is greater than 10 ENG... OK.
+    Please confirm that you agree to pay 10 ENG for a monthly subscription to the dataset "test" starting today. [default: Y] 
+    Ready to subscribe to dataset test.
 
-    Terms:
-        * New data published once per day at exactly 0:00
-        * Daily historical data available between:
-            * 2017-01-01 to 2018-01-21
-        * Subscription price 1ENG/month
-        * Subscribing for 1 month: 2017-01-22 to 2017-02-22
-        * Today's Deposit: 1ENG
-        * The entire 1ENG deposit will be transferred to Enigma on 2017-02-22
-          upon completion of these terms.
-
-    Agree to subscribe to Marketcap for 1ENG? [N] Y
-    Please unlock your wallet account to authorize signature.
-
-    Signature authorized.
-    0x627306090abab3a6e1400e9345bc60c78a8bef57 successfully subscribed to
-    Marketcap for 1ENG
-
+Catalyst will then provide you with instructions to sign two different 
+transactions to process your subscription to the dataset.
 
 Ingest
 ~~~~~~
@@ -51,7 +40,7 @@ use the command parameters to filter by date:
 
 .. code-block:: bash
 
-    $ catalyst ingest-data --dataset=Marketcap
+    $ catalyst marketplace ingest --dataset=Marketcap
     Ingesting data set Marketcap...
     [=                                   ]  Ingesting daily data for Marketcap:    4%  00:02:43
 
