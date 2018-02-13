@@ -138,39 +138,17 @@ registering each data source, as per the scheme outlined below:
 Registering Data Sets
 ~~~~~~~~~~~~~~~~~~~~~
 To register a new data set, download and install the Catalyst client.
-Then, use the ``catalyst register-data`` command. In this example, data is
+Then, use the ``catalyst marketplace register`` command. In this example, data is
 published multiple times per hour at a variable time:
 
 .. code-block:: bash
 
-    $ catalyst register-data
-    Enter the Data set name: Test
-    Enter the data frequency [daily, hourly, minute]: hourly
-    Can data be published every hour at a regular time? [default: Y]: N
-    At a minimum, how many times per hour will data be published? [default: 1]: 5
-    Does it include historical data [default: Y]? N
-    Please unlock your wallet account to authorize signature.
-
-    Signature authorized.
-    New data set: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
-
-In the following example, data is published daily on a fixed schedule:
-
-.. code-block:: bash
-
-    $ catalyst register-data
-    Enter the Data set name: Test
+    $ catalyst marketplace register
+    Enter the name of the dataset to register: test
+    Enter the price for a monthly subscription to this dataset in ENG: 10
     Enter the data frequency [daily, hourly, minute]: daily
-    Can data be published every day at a regular time? [default: Y]: Y
-    At what time will the data be published? [default: 0:00]: 0:00
-    Does it include historical data [default: Y]? Y
-    Enter the first event date of the range: 2017-01-01
-    Enter the last event date of the same range: 2017-12-31
-    Do you want to add another historical date range? N
-    Please unlock your wallet account to authorize signature.
-
-    Signature authorized.
-    New data set: Test successfully registered to publisher address: 0x627306090abab3a6e1400e9345bc60c78a8bef57
+    Does it include historical data? [default: Y]: 
+    Doest it include live data? [default: Y]: 
 
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -179,25 +157,11 @@ command:
 
 .. code-block:: bash
 
-    $ catalyst publish-data --data-source=Test --datadir=~/test-data/
+    $ catalyst marketplace publish --dataset=test --datadir=~/test-data/
 
 Upon execution, Catalyst will automatically identify, validate and upload
 the data in all CSV files directly inside the specified `datadir`. It will not
-scan recursively. It will create a `published` subdirectory in which to move
-each file when successfully published.
-
-For illustration, here is our `test-data` directory before running the
-`publish-data` command.
-
-.. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-before.png
-    :align: center
-    :alt: Test Data set Folder Before Publish
-
-Here is the same directory after successfully publishing the data.
-
-.. image:: https://s3.amazonaws.com/enigmaco-docs/data-providers/marketplace-publish-folders-after.png
-    :align: center
-    :alt: Test Data set Folder After Publish
+scan recursively. 
 
 The file naming convention is inconsequential; Catalyst will process any
 file with a CSV extension. As long as the data is correctly represented, it
@@ -215,6 +179,6 @@ parameter to the 'publish-data` command:
 
 .. code-block:: bash
 
-    $ catalyst publish-data --dataset=Test --datadir=~/test-data/ --watch
+    $ catalyst marketplace publish --dataset=test --datadir=~/test-data/ --watch
 
 
