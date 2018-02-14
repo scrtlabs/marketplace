@@ -58,9 +58,11 @@ market cap:
 
 .. code-block:: python
 
+    from catalyst.api import get_dataset
+
     def initialize(context):
         # Get the marketcap data
-        df = get_data_source(
+        df = get_dataset(
             'marketcap', start=context.datetime
         )  # type: pd.DataFrame
 

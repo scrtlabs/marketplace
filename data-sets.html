@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -32,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="next" title="Troubleshooting" href="troubleshooting.html"/>
         <link rel="prev" title="Server-side Authentication" href="authentication.html"/> 
@@ -43,21 +48,28 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
-        
+          
+            <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -66,138 +78,87 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#registration">Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscription">Subscription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscriber-related-functions">Subscriber related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#subscribe-bytes32-sourcename-bool">subscribe(bytes32 sourceName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriber-bytes32-dataname-bool">refundSubscriber(bytes32 dataName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#data-curator-related-functions">Data curator related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#register-bytes32-sourcename-uint-price-address-owner-bool">register(bytes32 sourceName, uint price, address owner):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withdrawprovider-bytes32-dataname-bool">withdrawProvider(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#updatedatasourceprice-bytes32-dataname-uint256-newprice-bool">updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#general-public-functions">General public functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getdataproviderinfo-bytes32-dataname-provider">getDataProviderInfo(bytes32 dataName):Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getallproviders-bytes32">getAllProviders():bytes32[]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamount-bytes32-dataname">getWithdrawAmount(bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamount-address-subscriber-bytes32-dataname-uint">getRefundAmount(address subscriber, bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isactivedatasource-bytes32-dataname-bool">isActiveDataSource(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscription-address-subscriber-bytes32-datasourcename-bool">isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-owner-only-related-functions">Marketplace owner only related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#setpunishprovider-bytes32-dataname-bool-ispunished-bool">setPunishProvider(bytes32 dataName, bool _isPunished):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-functionallity-with-loops-outside-the-chain">Marketplace functionallity with loops outside the chain</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriberat-bytes32-dataname-uint256-index-bool">refundSubscriberAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamountat-bytes32-dataname-uint256-index-uint">getRefundAmountAt(bytes32 dataName,uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getsubscriptionssize-bytes32-dataname-uint">getSubscriptionsSize(bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checksubscriptionat-bytes32-dataname-uint256-index">checkSubscriptionAt(bytes32 dataName, uint256 _index)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withrawproviderat-bytes32-dataname-uint256-index-bool">withrawProviderAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamountat-bytes32-dataname-uint256-index-uint">getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getprovidernamessize-uint">getProviderNamesSize():uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getnameat-uint256-index-bytes32">getNameAt(uint256 _index):bytes32</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-event-types">The Marketplace contract Event types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#source-code">Source code</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#subscribe">Subscribe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#ingest">Ingest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#use-in-an-algorithm">Use in an Algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-sets">Data Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-frequency-and-availability">Data Frequency and Availability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#registering-data-sets">Registering Data Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-historical-data">Publishing Historical Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-live-data">Publishing Live Data</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#signature-implementation">Signature Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#supported-wallets">Supported Wallets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#source-code">Source Code</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Enigma Data Marketplace</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Enigma Data Marketplace</a>
+        
       </nav>
 
 
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Data Sets</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Sets</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/data-sets.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/data-sets.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="data-sets">
 <h1>Data Sets<a class="headerlink" href="#data-sets" title="Permalink to this headline">¶</a></h1>
@@ -271,15 +232,19 @@ down by asset and exchange</td>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="authentication.html" class="btn btn-neutral" title="Server-side Authentication" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="authentication.html" class="btn btn-neutral" title="Server-side Authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -289,9 +254,10 @@ down by asset and exchange</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2018, Enigma MPC, Inc..
+
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -312,7 +278,8 @@ down by asset and exchange</td>
             VERSION:'0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

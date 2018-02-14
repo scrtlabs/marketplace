@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -32,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
         <link rel="next" title="Data Sets" href="data-sets.html"/>
         <link rel="prev" title="Data Providers" href="data-providers.html"/> 
@@ -43,21 +48,28 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
-        
+          
+            <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -66,95 +78,23 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#registration">Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#subscription">Subscription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#consumption">Consumption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#incentives">Incentives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-privacy">Data privacy</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#registration">Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscription">Subscription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#subscriber-related-functions">Subscriber related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#subscribe-bytes32-sourcename-bool">subscribe(bytes32 sourceName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriber-bytes32-dataname-bool">refundSubscriber(bytes32 dataName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#data-curator-related-functions">Data curator related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#register-bytes32-sourcename-uint-price-address-owner-bool">register(bytes32 sourceName, uint price, address owner):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withdrawprovider-bytes32-dataname-bool">withdrawProvider(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#updatedatasourceprice-bytes32-dataname-uint256-newprice-bool">updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#general-public-functions">General public functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getdataproviderinfo-bytes32-dataname-provider">getDataProviderInfo(bytes32 dataName):Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getallproviders-bytes32">getAllProviders():bytes32[]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamount-bytes32-dataname">getWithdrawAmount(bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamount-address-subscriber-bytes32-dataname-uint">getRefundAmount(address subscriber, bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isactivedatasource-bytes32-dataname-bool">isActiveDataSource(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscription-address-subscriber-bytes32-datasourcename-bool">isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-owner-only-related-functions">Marketplace owner only related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#setpunishprovider-bytes32-dataname-bool-ispunished-bool">setPunishProvider(bytes32 dataName, bool _isPunished):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#marketplace-functionallity-with-loops-outside-the-chain">Marketplace functionallity with loops outside the chain</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#refundsubscriberat-bytes32-dataname-uint256-index-bool">refundSubscriberAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getrefundamountat-bytes32-dataname-uint256-index-uint">getRefundAmountAt(bytes32 dataName,uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getsubscriptionssize-bytes32-dataname-uint">getSubscriptionsSize(bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#checksubscriptionat-bytes32-dataname-uint256-index">checkSubscriptionAt(bytes32 dataName, uint256 _index)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#withrawproviderat-bytes32-dataname-uint256-index-bool">withrawProviderAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getwithdrawamountat-bytes32-dataname-uint256-index-uint">getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getprovidernamessize-uint">getProviderNamesSize():uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#getnameat-uint256-index-bytes32">getNameAt(uint256 _index):bytes32</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#the-marketplace-contract-event-types">The Marketplace contract Event types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smart-contract.html#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="smart-contract.html#source-code">Source code</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#subscribe">Subscribe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#ingest">Ingest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-subscribers.html#use-in-an-algorithm">Use in an Algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-sets">Data Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#data-frequency-and-availability">Data Frequency and Availability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#registering-data-sets">Registering Data Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-historical-data">Publishing Historical Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-providers.html#publishing-live-data">Publishing Live Data</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Server-side Authentication</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Server-side Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#signature-implementation">Signature Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-wallets">Supported Wallets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
@@ -164,40 +104,66 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Enigma Data Marketplace</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Enigma Data Marketplace</a>
+        
       </nav>
 
 
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Server-side Authentication</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Server-side Authentication</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/authentication.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/authentication.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="server-side-authentication">
 <h1>Server-side Authentication<a class="headerlink" href="#server-side-authentication" title="Permalink to this headline">¶</a></h1>
@@ -209,19 +175,19 @@ the cloud.</p>
 <p>When a user running Catalyst on their local machine requests to ingest a data
 set they are subscribed to, Catalyst routes that request to the authentication
 server. The authentication scheme used between client and server is an
-implementation of digest access authentication using the user&#8217;s private and
+implementation of digest access authentication using the user’s private and
 public cryptographic keys, without the client ever handling their private key
 directly.</p>
 <p>When the user requests access to a subscribed data set, their Catalyst client
 opens a session with the authentication server. The server replies back with a
 challenge that includes a <code class="docutils literal"><span class="pre">nonce</span></code> and an <code class="docutils literal"><span class="pre">opaque</span></code> as specified in
 <a class="reference external" href="https://tools.ietf.org/html/rfc2617#section-3.2.1">RFC 2617</a>. The client then
-requests the <code class="docutils literal"><span class="pre">nonce</span></code> to be hashed and signed using the user&#8217;s private key.
+requests the <code class="docutils literal"><span class="pre">nonce</span></code> to be hashed and signed using the user’s private key.
 The client replies to the authentication server with the signature of the
 hashed <code class="docutils literal"><span class="pre">nonce</span></code> and the <code class="docutils literal"><span class="pre">opaque</span></code> untouched. The server validates that the
 <code class="docutils literal"><span class="pre">nonce</span></code> and <code class="docutils literal"><span class="pre">opaque</span></code> are valid, and verifies that the signature corresponds
-with the user&#8217;s public address. If successful, queries the smart contract to
-validate that the user&#8217;s public address holds and active subscrition to the
+with the user’s public address. If successful, queries the smart contract to
+validate that the user’s public address holds and active subscrition to the
 requested data set, and if successful responds with the requested data set back
 to the client, thereby completing the request.</p>
 <img alt="Digest Authentication" class="align-center" src="https://s3.amazonaws.com/enigmaco-docs/digest-authentication.png" />
@@ -233,22 +199,22 @@ public address is a hash+checksum of the public key. It is critical that the
 private key is not leaked, otherwise whoever has access to the private key gains
 full control of its associated address.</p>
 <p>Instead of Catalyst handling any private keys to authenticate requests, Catalyst
-supports external wallets that handle the user&#8217;s private keys, and can sign
+supports external wallets that handle the user’s private keys, and can sign
 transactions on their behalf. Catalyst requests any of the supported wallets to
 sign a transaction on behalf of the user (the wallet will require the user to
 enter a password to unlock their account), and returns the signature to Catalyst
 so that it can continue with the authentication process.</p>
 <div class="section" id="signature-implementation">
 <h2>Signature Implementation<a class="headerlink" href="#signature-implementation" title="Permalink to this headline">¶</a></h2>
-<p>The digest authentication scheme for Enigma&#8217;s Data Marketplace uses an
+<p>The digest authentication scheme for Enigma’s Data Marketplace uses an
 Ethereum-compatible signature implementation that adds a custom Ethereum
 message and length using the following structure:</p>
-<div class="code python highlight-python"><div class="highlight"><pre>message_to_sign(message):
-         msg = &quot;\x19Ethereum Signed Message:\n&quot; + str(len(message)) + message
-         return sha3(msg)
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">message_to_sign</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x19</span><span class="s2">Ethereum Signed Message:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">))</span> <span class="o">+</span> <span class="n">message</span>
+         <span class="k">return</span> <span class="n">sha3</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where the <code class="docutils literal"><span class="pre">sha3()</span></code> is Ethereum&#8217;s implementation of the
+<p>where the <code class="docutils literal"><span class="pre">sha3()</span></code> is Ethereum’s implementation of the
 <a class="reference external" href="https://keccak.team/index.html">KECCAK-256</a> cryptographic hash function,
 albeit it does not follow the
 <a class="reference external" href="https://keccak.team/specifications.html#FIPS_202">FIPS-202</a> based standard
@@ -275,7 +241,7 @@ online interface:<ul>
 <h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>The relevant server-side code that handles the digest authentication described
 in this section is the following:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ethereum.utils</span> <span class="kn">import</span> <span class="n">ecrecover_to_pub</span><span class="p">,</span> <span class="n">checksum_encode</span><span class="p">,</span> <span class="n">sha3</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ethereum.utils</span> <span class="kn">import</span> <span class="n">ecrecover_to_pub</span><span class="p">,</span> <span class="n">checksum_encode</span><span class="p">,</span> <span class="n">sha3</span>
 
 
 <span class="k">def</span> <span class="nf">hex_to_byte</span><span class="p">(</span><span class="n">hexStr</span><span class="p">):</span>
@@ -283,28 +249,28 @@ in this section is the following:</p>
 <span class="sd">    Convert a string hex byte values into a byte string. The Hex Byte values</span>
 <span class="sd">    may or may not be space separated.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># The list comprehension implementation is fractionally slower in this case</span>
-    <span class="c">#</span>
-    <span class="c">#    hexStr = &#39;&#39;.join( hexStr.split(&quot; &quot;) )</span>
-    <span class="c">#    return &#39;&#39;.join( [&quot;%c&quot; % chr( int ( hexStr[i:i+2],16 ) ) \</span>
-    <span class="c">#                                   for i in range(0, len( hexStr ), 2) ] )</span>
+    <span class="c1"># The list comprehension implementation is fractionally slower in this case</span>
+    <span class="c1">#</span>
+    <span class="c1">#    hexStr = &#39;&#39;.join( hexStr.split(&quot; &quot;) )</span>
+    <span class="c1">#    return &#39;&#39;.join( [&quot;%c&quot; % chr( int ( hexStr[i:i+2],16 ) ) \</span>
+    <span class="c1">#                                   for i in range(0, len( hexStr ), 2) ] )</span>
     <span class="n">_bytes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">hexStr</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hexStr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">hexStr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hexStr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexStr</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
         <span class="n">_bytes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexStr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="mi">16</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_bytes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_bytes</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">msg_to_sign</span><span class="p">(</span><span class="n">hexStr</span><span class="p">):</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">hex_to_byte</span><span class="p">(</span><span class="n">hexStr</span><span class="p">)</span>
     <span class="n">message</span> <span class="o">=</span> <span class="n">hex_to_byte</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span>
-                <span class="s">&quot;</span><span class="se">\x19</span><span class="s">Ethereum Signed Message:</span><span class="se">\n</span><span class="s">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))))</span>
+                <span class="s2">&quot;</span><span class="se">\x19</span><span class="s2">Ethereum Signed Message:</span><span class="se">\n</span><span class="s2">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))))</span>
     <span class="k">return</span> <span class="n">message</span><span class="o">+</span><span class="n">b</span>
 
 
 <span class="k">class</span> <span class="nc">CatalystAuth</span><span class="p">(</span><span class="n">HTTPDigestAuth</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">realm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">use_ha1_pw</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CatalystAuth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">scheme</span> <span class="ow">or</span> <span class="s">&#39;Digest&#39;</span><span class="p">,</span> <span class="n">realm</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">realm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">use_ha1_pw</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CatalystAuth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scheme</span> <span class="ow">or</span> <span class="s1">&#39;Digest&#39;</span><span class="p">,</span> <span class="n">realm</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">stored_password_or_ha1</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">auth</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">username</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">realm</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">uri</span>
@@ -315,16 +281,16 @@ in this section is the following:</p>
                 <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verify_opaque_callback</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">opaque</span><span class="p">)):</span>
             <span class="k">return</span> <span class="bp">False</span>
 
-        <span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">wallet</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">auth</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">wallet</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">auth</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
 
-        <span class="k">if</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s">&#39;mew&#39;</span><span class="p">:</span>
-            <span class="n">nonce</span> <span class="o">=</span> <span class="s">&#39;0x{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">)</span>
-            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\x19</span><span class="s">Ethereum Signed Message:</span><span class="se">\n</span><span class="s">{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">if</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s1">&#39;mew&#39;</span><span class="p">:</span>
+            <span class="n">nonce</span> <span class="o">=</span> <span class="s1">&#39;0x{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">)</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x19</span><span class="s2">Ethereum Signed Message:</span><span class="se">\n</span><span class="s2">{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                             <span class="nb">len</span><span class="p">(</span><span class="n">nonce</span><span class="p">),</span> <span class="n">nonce</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s">&#39;parity&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s1">&#39;parity&#39;</span><span class="p">:</span>
             <span class="n">message</span> <span class="o">=</span> <span class="n">msg_to_sign</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>  <span class="c"># Wallet not supported, fail silently</span>
+            <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># Wallet not supported, fail silently</span>
 
         <span class="n">pub</span> <span class="o">=</span> <span class="n">ecrecover_to_pub</span><span class="p">(</span><span class="n">sha3</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
         <span class="n">pubAddr</span> <span class="o">=</span> <span class="n">checksum_encode</span><span class="p">(</span><span class="n">sha3</span><span class="p">(</span><span class="n">pub</span><span class="p">)[</span><span class="o">-</span><span class="mi">20</span><span class="p">:])</span>
@@ -336,15 +302,19 @@ in this section is the following:</p>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="data-sets.html" class="btn btn-neutral float-right" title="Data Sets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data-sets.html" class="btn btn-neutral float-right" title="Data Sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data-providers.html" class="btn btn-neutral" title="Data Providers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="data-providers.html" class="btn btn-neutral" title="Data Providers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -354,9 +324,10 @@ in this section is the following:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2018, Enigma MPC, Inc..
+
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -377,7 +348,8 @@ in this section is the following:</p>
             VERSION:'0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
