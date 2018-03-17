@@ -59,6 +59,7 @@ market cap:
 .. code-block:: python
 
     from catalyst.api import get_dataset
+    from catalyst.exchange.utils.stats_utils import set_print_settings
 
     def initialize(context):
         # Get the marketcap data

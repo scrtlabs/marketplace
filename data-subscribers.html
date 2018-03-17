@@ -213,6 +213,7 @@ appropriate, the data source is now usable in your algorithms.</p>
 <cite>initialize()</cite> function of an algorithm to rank the top-five asset by
 market cap:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">catalyst.api</span> <span class="kn">import</span> <span class="n">get_dataset</span>
+<span class="kn">from</span> <span class="nn">catalyst.exchange.utils.stats_utils</span> <span class="kn">import</span> <span class="n">set_print_settings</span>
 
 <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="c1"># Get the marketcap data</span>
