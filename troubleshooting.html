@@ -95,7 +95,11 @@
 <li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -161,6 +165,30 @@
             
   <div class="section" id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>If you experience problems using the Data Marketplace, you can seek additional
+help through the following channels:</p>
+<ul class="simple">
+<li>Join our <a class="reference external" href="https://catalyst.enigma.co/">Catalyst Forum</a>, and browse a variety
+of topics and conversations around common issues that others face when using
+Catalyst and the Data Marketplace, and how to resolve them. And join the
+conversation!</li>
+<li>Join our <a class="reference external" href="https://discord.gg/SJK32GY">Discord community</a>, and head over
+the #marketplace channel where many other users (as well as the project
+developers) hang out, and can assist you with your particular issue. The
+more descriptive and the more information you can provide, the easiest will
+be for others to help you out.</li>
+<li>Report the problem you are experiencing on our
+<a class="reference external" href="https://github.com/enigmampc/catalyst/issues">GitHub repository</a>
+following the guidelines provided therein. Before you do so, take a moment
+to browse through all <a class="reference external" href="https://github.com/enigmampc/catalyst/issues?utf8=%E2%9C%93&amp;q=is%3Aissue">previous reported issues</a>
+in the likely case that someone else experienced that same issue before,
+and you get a hint on how to solve it.</li>
+</ul>
+</div>
+<div class="section" id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
 <p>If you get errors like either one of these:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;(...)/virtualenv/lib/python3.6/site-packages/eth_keyfile/keyfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
   <span class="kn">from</span> <span class="nn">Crypto.Protocol.KDF</span> <span class="kn">import</span> <span class="n">scrypt</span>
@@ -180,6 +208,7 @@ being maintained currently:</p>
 <p>and it that was the case, reinstall package <code class="docutils literal"><span class="pre">pycryptodome</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">pycryptodome</span><span class="p">;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycryptodome</span>
 </pre></div>
+</div>
 </div>
 </div>
 
