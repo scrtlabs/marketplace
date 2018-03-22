@@ -3,7 +3,8 @@
     :align: center
     :alt: Enigma | Marketplace
 
-|
+|forum|
+
 |
 
 Overview
@@ -39,3 +40,6 @@ kinds of data streams, including those that include personally identifiable
 information (PII).
 
 Learn more at our `Documentation Website <https://enigmampc.github.io/marketplace/>`_.
+
+.. |forum| image:: https://img.shields.io/badge/forum-join-green.svg
+   :target: https://catalyst.enigma.co/
