@@ -15,37 +15,39 @@ provider stops delivering data as per their agreement, the subscriber will be
 automatically refunded on a *pro rata* basis for the unfulfilled portion of 
 their subscription.
 
-The following command subscribes to the Marketcap data set:
+The following command subscribes to the ``marketcap`` data set:
 
 .. code-block:: bash
 
-    $ catalyst marketplace subscribe --dataset=test
+    $ catalyst marketplace subscribe --dataset=marketcap
     
     The price for a monthly subscription to this dataset is 10 ENG
     Checking that the ENG balance in 0x..... is greater than 10 ENG... OK.
-    Please confirm that you agree to pay 10 ENG for a monthly subscription to the dataset "test" starting today. [default: Y] 
-    Ready to subscribe to dataset test.
+    Please confirm that you agree to pay 10 ENG for a monthly subscription to the dataset "marketcap" starting today. [default: Y] 
+    Ready to subscribe to dataset marketcap.
 
 Catalyst will then provide you with instructions to sign two different 
 transactions to process your subscription to the dataset.
 
 Ingest
 ~~~~~~
-The Catalyst ``ingest-data`` command makes the specified portion of a data set 
-available locally for backtesting with Catalyst.
+The Catalyst ``ingest-data`` command downloads and makes the given data set 
+available locally for backtesting or live trading with Catalyst.
 
-This commands ingests all the data available in the Marketcap data set.
-If the data takes a long time to download and you only need a subset,
-use the command parameters to filter by date:
+The following command ingests the ``marketcap`` data set:
 
 .. code-block:: bash
 
-    $ catalyst marketplace ingest --dataset=Marketcap
-    Ingesting data set Marketcap...
-    [=                                   ]  Ingesting daily data for Marketcap:    4%  00:02:43
+    $ catalyst marketplace ingest --dataset=marketcap
+    Starting download of dataset for ingestion...
+    Dataset downloaded successfully. Processing dataset...
+    INFO: Marketplace: Processing file 0 of 1
+    INFO: Marketplace: Processing file 1 of 1
 
-
-The progress bar will dynamically update until completion.
+If you need to keep the data up to date while running a live algorithm, you can
+schedule a job (``cron`` in Linux/MacOS) to run the above command at periodic 
+intervals, and the live/paper trading algorithm will always retrieve the latest
+data available on disk on every iteration of the algorithm.
 
 Use in an Algorithm
 ~~~~~~~~~~~~~~~~~~~
