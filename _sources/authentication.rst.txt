@@ -71,7 +71,6 @@ Supported Wallets
 The wallets currently supported by Catalyst to access the Data Marketplace are:
 
 * MyEtherWallet
-* Parity
 * Any other wallet that allows to sign transactions through the MyEtherWallet 
   online interface: 
 
@@ -80,72 +79,3 @@ The wallets currently supported by Catalyst to access the Data Marketplace are:
   * TREZOR
   * Digital Bitbox
   * Keystore / JSON File
-
-Source Code
-~~~~~~~~~~~
-
-The relevant server-side code that handles the digest authentication described 
-in this section is the following:
-
-.. code:: python
-
-	from ethereum.utils import ecrecover_to_pub, checksum_encode, sha3
-
-
-	def hex_to_byte(hexStr):
-	    """
-	    Convert a string hex byte values into a byte string. The Hex Byte values
-	    may or may not be space separated.
-	    """
-	    # The list comprehension implementation is fractionally slower in this case
-	    #
-	    #    hexStr = ''.join( hexStr.split(" ") )
-	    #    return ''.join( ["%c" % chr( int ( hexStr[i:i+2],16 ) ) \
-	    #                                   for i in range(0, len( hexStr ), 2) ] )
-	    _bytes = []
-	    hexStr = ''.join(hexStr.split(" "))
-	    for i in range(0, len(hexStr), 2):
-	        _bytes.append(chr(int(hexStr[i:i+2], 16)))
-	    return ''.join(_bytes)
-
-
-	def msg_to_sign(hexStr):
-	    b = hex_to_byte(hexStr)
-	    message = hex_to_byte(binascii.hexlify(
-	                "\x19Ethereum Signed Message:\n{}".format(len(b))))
-	    return message+b
-
-
-	class CatalystAuth(HTTPDigestAuth):
-	    def __init__(self, scheme=None, realm=None, use_ha1_pw=False):
-	        super(CatalystAuth, self).__init__(scheme or 'Digest', realm)
-
-	    def authenticate(self, auth, stored_password_or_ha1):
-	        if(not auth or not auth.username or not auth.realm or not auth.uri
-	           or not auth.nonce or not auth.response):
-	                return False
-
-	        if not(self.verify_nonce_callback(auth.nonce)) or \
-	                not(self.verify_opaque_callback(auth.opaque)):
-	            return False
-
-	        v, r, s, wallet = [e for e in auth.response.split(',')]
-
-	        if wallet == 'mew':
-	            nonce = '0x{}'.format(auth.nonce)
-	            message = "\x19Ethereum Signed Message:\n{}{}".format(
-	                            len(nonce), nonce)
-	        elif wallet == 'parity':
-	            message = msg_to_sign(auth.nonce)
-	        else:
-	            return False  # Wallet not supported, fail silently
-
-	        pub = ecrecover_to_pub(sha3(message), long(v), long(r), long(s))
-	        pubAddr = checksum_encode(sha3(pub)[-20:])
-
-	        return pubAddr.lower() == auth.username.lower()
-
-.. The source code for the digest authentication server is available at:
-.. https://github.com/enigmampc/marketplace-authentication 
-
-

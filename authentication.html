@@ -97,7 +97,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Server-side Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#signature-implementation">Signature Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-wallets">Supported Wallets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
@@ -225,7 +224,6 @@ albeit it does not follow the
 <p>The wallets currently supported by Catalyst to access the Data Marketplace are:</p>
 <ul class="simple">
 <li>MyEtherWallet</li>
-<li>Parity</li>
 <li>Any other wallet that allows to sign transactions through the MyEtherWallet
 online interface:<ul>
 <li>MetaMask / Mist</li>
@@ -236,68 +234,6 @@ online interface:<ul>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="source-code">
-<h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
-<p>The relevant server-side code that handles the digest authentication described
-in this section is the following:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ethereum.utils</span> <span class="kn">import</span> <span class="n">ecrecover_to_pub</span><span class="p">,</span> <span class="n">checksum_encode</span><span class="p">,</span> <span class="n">sha3</span>
-
-
-<span class="k">def</span> <span class="nf">hex_to_byte</span><span class="p">(</span><span class="n">hexStr</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Convert a string hex byte values into a byte string. The Hex Byte values</span>
-<span class="sd">    may or may not be space separated.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># The list comprehension implementation is fractionally slower in this case</span>
-    <span class="c1">#</span>
-    <span class="c1">#    hexStr = &#39;&#39;.join( hexStr.split(&quot; &quot;) )</span>
-    <span class="c1">#    return &#39;&#39;.join( [&quot;%c&quot; % chr( int ( hexStr[i:i+2],16 ) ) \</span>
-    <span class="c1">#                                   for i in range(0, len( hexStr ), 2) ] )</span>
-    <span class="n">_bytes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">hexStr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hexStr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexStr</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="n">_bytes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexStr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="mi">16</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_bytes</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">msg_to_sign</span><span class="p">(</span><span class="n">hexStr</span><span class="p">):</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">hex_to_byte</span><span class="p">(</span><span class="n">hexStr</span><span class="p">)</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="n">hex_to_byte</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span>
-                <span class="s2">&quot;</span><span class="se">\x19</span><span class="s2">Ethereum Signed Message:</span><span class="se">\n</span><span class="s2">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))))</span>
-    <span class="k">return</span> <span class="n">message</span><span class="o">+</span><span class="n">b</span>
-
-
-<span class="k">class</span> <span class="nc">CatalystAuth</span><span class="p">(</span><span class="n">HTTPDigestAuth</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">realm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">use_ha1_pw</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CatalystAuth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scheme</span> <span class="ow">or</span> <span class="s1">&#39;Digest&#39;</span><span class="p">,</span> <span class="n">realm</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">stored_password_or_ha1</span><span class="p">):</span>
-        <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">auth</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">username</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">realm</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">uri</span>
-           <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">nonce</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">auth</span><span class="o">.</span><span class="n">response</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">False</span>
-
-        <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verify_nonce_callback</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">))</span> <span class="ow">or</span> \
-                <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verify_opaque_callback</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">opaque</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="bp">False</span>
-
-        <span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">wallet</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">auth</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
-
-        <span class="k">if</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s1">&#39;mew&#39;</span><span class="p">:</span>
-            <span class="n">nonce</span> <span class="o">=</span> <span class="s1">&#39;0x{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">)</span>
-            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x19</span><span class="s2">Ethereum Signed Message:</span><span class="se">\n</span><span class="s2">{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                            <span class="nb">len</span><span class="p">(</span><span class="n">nonce</span><span class="p">),</span> <span class="n">nonce</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">wallet</span> <span class="o">==</span> <span class="s1">&#39;parity&#39;</span><span class="p">:</span>
-            <span class="n">message</span> <span class="o">=</span> <span class="n">msg_to_sign</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">nonce</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># Wallet not supported, fail silently</span>
-
-        <span class="n">pub</span> <span class="o">=</span> <span class="n">ecrecover_to_pub</span><span class="p">(</span><span class="n">sha3</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="nb">long</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-        <span class="n">pubAddr</span> <span class="o">=</span> <span class="n">checksum_encode</span><span class="p">(</span><span class="n">sha3</span><span class="p">(</span><span class="n">pub</span><span class="p">)[</span><span class="o">-</span><span class="mi">20</span><span class="p">:])</span>
-
-        <span class="k">return</span> <span class="n">pubAddr</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">auth</span><span class="o">.</span><span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
 </div>
 </div>
 
