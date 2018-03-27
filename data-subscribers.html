@@ -179,13 +179,13 @@ by the <a class="reference internal" href="smart-contract.html"><span class="doc
 provider stops delivering data as per their agreement, the subscriber will be
 automatically refunded on a <em>pro rata</em> basis for the unfulfilled portion of
 their subscription.</p>
-<p>The following command subscribes to the Marketcap data set:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace subscribe --dataset<span class="o">=</span><span class="nb">test</span>
+<p>The following command subscribes to the <code class="docutils literal"><span class="pre">marketcap</span></code> data set:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace subscribe --dataset<span class="o">=</span>marketcap
 
 The price <span class="k">for</span> a monthly subscription to this dataset is <span class="m">10</span> ENG
 Checking that the ENG balance in 0x..... is greater than <span class="m">10</span> ENG... OK.
-Please confirm that you agree to pay <span class="m">10</span> ENG <span class="k">for</span> a monthly subscription to the dataset <span class="s2">&quot;test&quot;</span> starting today. <span class="o">[</span>default: Y<span class="o">]</span>
-Ready to subscribe to dataset test.
+Please confirm that you agree to pay <span class="m">10</span> ENG <span class="k">for</span> a monthly subscription to the dataset <span class="s2">&quot;marketcap&quot;</span> starting today. <span class="o">[</span>default: Y<span class="o">]</span>
+Ready to subscribe to dataset marketcap.
 </pre></div>
 </div>
 <p>Catalyst will then provide you with instructions to sign two different
@@ -193,17 +193,20 @@ transactions to process your subscription to the dataset.</p>
 </div>
 <div class="section" id="ingest">
 <h2>Ingest<a class="headerlink" href="#ingest" title="Permalink to this headline">¶</a></h2>
-<p>The Catalyst <code class="docutils literal"><span class="pre">ingest-data</span></code> command makes the specified portion of a data set
-available locally for backtesting with Catalyst.</p>
-<p>This commands ingests all the data available in the Marketcap data set.
-If the data takes a long time to download and you only need a subset,
-use the command parameters to filter by date:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace ingest --dataset<span class="o">=</span>Marketcap
-Ingesting data <span class="nb">set</span> Marketcap...
-<span class="o">[=</span>                                   <span class="o">]</span>  Ingesting daily data <span class="k">for</span> Marketcap:    <span class="m">4</span>%  <span class="m">00</span>:02:43
+<p>The Catalyst <code class="docutils literal"><span class="pre">ingest-data</span></code> command downloads and makes the given data set
+available locally for backtesting or live trading with Catalyst.</p>
+<p>The following command ingests the <code class="docutils literal"><span class="pre">marketcap</span></code> data set:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace ingest --dataset<span class="o">=</span>marketcap
+Starting download of dataset <span class="k">for</span> ingestion...
+Dataset downloaded successfully. Processing dataset...
+INFO: Marketplace: Processing file <span class="m">0</span> of <span class="m">1</span>
+INFO: Marketplace: Processing file <span class="m">1</span> of <span class="m">1</span>
 </pre></div>
 </div>
-<p>The progress bar will dynamically update until completion.</p>
+<p>If you need to keep the data up to date while running a live algorithm, you can
+schedule a job (<code class="docutils literal"><span class="pre">cron</span></code> in Linux/MacOS) to run the above command at periodic
+intervals, and the live/paper trading algorithm will always retrieve the latest
+data available on disk on every iteration of the algorithm.</p>
 </div>
 <div class="section" id="use-in-an-algorithm">
 <h2>Use in an Algorithm<a class="headerlink" href="#use-in-an-algorithm" title="Permalink to this headline">¶</a></h2>

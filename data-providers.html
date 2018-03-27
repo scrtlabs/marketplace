@@ -99,6 +99,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#registering-data-sets">Registering Data Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#publishing-historical-data">Publishing Historical Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#publishing-live-data">Publishing Live Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publishers-api">Publishers’ API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publish-endpoint">Publish endpoint</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
@@ -200,6 +205,7 @@ appropriate level of precision. Valid examples include:</p>
 <li>“2017-12-14 23:00” (for December 14th, 2017 at 11:00PM)</li>
 </ul>
 </div></blockquote>
+<p>Dates should default to UTC for the timezone.</p>
 </li>
 <li><p class="first">Numbers: Numbers should be provided as integer or floats without quotes.
 Use as many decimals as necessary.</p>
@@ -283,34 +289,20 @@ registering each data source, as per the scheme outlined below:</p>
 <li><p class="first">Data frequency: How frequently do data events occur?</p>
 <blockquote>
 <div><ul class="simple">
-<li>Strict daily: Publish one event each day at a set time.</li>
-<li>Strict hourly: Publish one event each hour between a set range of
+<li><code class="docutils literal"><span class="pre">daily</span></code>: Publish one event each day at a set time.</li>
+<li><code class="docutils literal"><span class="pre">hourly</span></code>: Publish one event each hour between a set range of
 minutes.</li>
-<li>Strict minutely: Publish one event each minutes between a set range
+<li><code class="docutils literal"><span class="pre">minute</span></code>: Publish one event each minute between a set range
 of seconds.</li>
-<li>At least each x days: Publish one of more events every day.</li>
-<li>At least each x hours: Publish one or more events each hour.</li>
-<li>At lest each x minutes: Publish one of more events each minute.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Data Availability: How far back are we getting data?</p>
-<blockquote>
-<div><ul>
-<li><p class="first">Historical range: The data range for historical data. Use multiple date
-ranges if the data does not follow a continuous timeframe.</p>
+<li><p class="first">Data Availability:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Start: Date/time of the first data event of the range.</li>
-<li>End: Date/time of the last data event of the range.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Ongoing: Will data events continue to be published at the specified
-frequency on an ongoing basis?</p>
-</li>
-<li><p class="first">Scheduled holds: A list a dates for scheduled gaps in ongoing data.</p>
-</li>
+<li>Historical: The dataset includes historical data.</li>
+<li>Live: Data events will be published at the specified
+frequency on an ongoing basis.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -319,8 +311,8 @@ frequency on an ongoing basis?</p>
 <div class="section" id="registering-data-sets">
 <h2>Registering Data Sets<a class="headerlink" href="#registering-data-sets" title="Permalink to this headline">¶</a></h2>
 <p>To register a new data set, download and install the Catalyst client.
-Then, use the <code class="docutils literal"><span class="pre">catalyst</span> <span class="pre">marketplace</span> <span class="pre">register</span></code> command. In this example, data is
-published multiple times per hour at a variable time:</p>
+Then, use the <code class="docutils literal"><span class="pre">catalyst</span> <span class="pre">marketplace</span> <span class="pre">register</span></code> command. In this example, data
+is published multiple times per hour at a variable time:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace register
 Enter the name of the dataset to register: <span class="nb">test</span>
 Enter the price <span class="k">for</span> a monthly subscription to this dataset in ENG: <span class="m">10</span>
@@ -332,13 +324,13 @@ Doest it include live data? <span class="o">[</span>default: Y<span class="o">]<
 </div>
 <div class="section" id="publishing-historical-data">
 <h2>Publishing Historical Data<a class="headerlink" href="#publishing-historical-data" title="Permalink to this headline">¶</a></h2>
-<p>To upload data in an registered data set, use the <cite>catalyst publish-data</cite>
+<p>To upload data in an registered data set, use the <code class="docutils literal"><span class="pre">catalyst</span> <span class="pre">marketplace</span> <span class="pre">publish</span></code>
 command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace publish --dataset<span class="o">=</span><span class="nb">test</span> --datadir<span class="o">=</span>~/test-data/
 </pre></div>
 </div>
 <p>Upon execution, Catalyst will automatically identify, validate and upload
-the data in all CSV files directly inside the specified <cite>datadir</cite>. It will not
+the data in all CSV files directly inside the specified <code class="docutils literal"><span class="pre">datadir</span></code>. It will not
 scan recursively.</p>
 <p>The file naming convention is inconsequential; Catalyst will process any
 file with a CSV extension. As long as the data is correctly represented, it
@@ -348,12 +340,96 @@ It does not roll-back the files already published.</p>
 </div>
 <div class="section" id="publishing-live-data">
 <h2>Publishing Live Data<a class="headerlink" href="#publishing-live-data" title="Permalink to this headline">¶</a></h2>
-<p>Publishing live data works similarly to publishing historical data
-except that Catalyst will watch the <cite>datadir</cite> and try to publish new data in
-new or modified CSV files. To publish live data, simply add a the <cite>watch</cite>
-parameter to the ‘publish-data` command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace publish --dataset<span class="o">=</span><span class="nb">test</span> --datadir<span class="o">=</span>~/test-data/ --watch
+<p>Publishing live data works the same as publishing historical data running the
+same command every time new data is available:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace publish --dataset<span class="o">=</span><span class="nb">test</span> --datadir<span class="o">=</span>~/test-data/
 </pre></div>
+</div>
+</div>
+<div class="section" id="publishers-api">
+<h2>Publishers’ API<a class="headerlink" href="#publishers-api" title="Permalink to this headline">¶</a></h2>
+<p>In order to facilitate the process of automating the publication of live data,
+the Data Marketplace provides the following Application Programming Interface
+(API).</p>
+<p>Base URL: <code class="docutils literal"><span class="pre">http://data.enigma.co</span></code></p>
+<div class="section" id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<p>The endpoint requires an API key/secret pair. Use the catalyst client to publish
+data once manually, and it will generate the key/secret pair for you, and store
+it in the following location: <code class="docutils literal"><span class="pre">$HOME/.catalyst/data/marketplace/addresses.json</span></code>
+from where you can retrieve it to use it programmatically.</p>
+<p>In your API request, you have to include the following HTTP headers: <br />
+(example code provided in Python)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">hmac</span>
+
+<span class="k">def</span> <span class="nf">get_signed_headers</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">):</span>
+  <span class="n">nonce</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+
+  <span class="n">signature</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;{}{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">nonce</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+        <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span>
+  <span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Sign&#39;</span><span class="p">:</span> <span class="n">signature</span><span class="p">,</span>
+        <span class="s1">&#39;Key&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span>
+        <span class="s1">&#39;Nonce&#39;</span><span class="p">:</span> <span class="n">nonce</span><span class="p">,</span>
+        <span class="s1">&#39;Dataset&#39;</span><span class="p">:</span> <span class="n">dataset</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">headers</span>
+</pre></div>
+</div>
+<p>The nonce must be a monotonically increasing counter (in the example above
+generated using the number of seconds since the <cite>epoch</cite>), and the signature is
+the keyed-hash of the concatenation of the name of the dataset for which you
+want to publish data and the nonce, encrypted with the secret.</p>
+</div>
+<div class="section" id="publish-endpoint">
+<h3>Publish endpoint<a class="headerlink" href="#publish-endpoint" title="Permalink to this headline">¶</a></h3>
+<p>The endpoint used for publishing data is located at <code class="docutils literal"><span class="pre">/marketplace/publish</span></code>,
+and it only accepts <code class="docutils literal"><span class="pre">POST</span></code> requests. If you try to visit the endpoint with
+your browser, you will get a <strong>Method Not Allowed</strong> error because by default the
+browser will use <code class="docutils literal"><span class="pre">GET</span></code> to retrieve the page, and it will fail.</p>
+<p>You need to include the files you want to upload in the request as follows:<br />
+(example code provided in Python)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://data.enigma.co&#39;</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1"># specify your dataset</span>
+<span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>        <span class="c1"># specify your key</span>
+<span class="n">secret</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>     <span class="c1"># specify your secret</span>
+<span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1"># specify your data folder</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">filenames</span><span class="p">:</span>
+  <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No files to upload.&#39;</span><span class="p">)</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+    <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)))</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="n">get_signed_headers</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;{}/marketplace/publish&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">),</span>
+                  <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
+                  <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Error uploading file: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Error uploading file: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;error&#39;</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Dataset {} uploaded successfully.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

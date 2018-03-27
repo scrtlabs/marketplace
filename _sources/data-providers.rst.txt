@@ -31,6 +31,8 @@ Here are the applicable data type conventions:
     * "2017-11-01" or "2017-11-1" (for November 1st, 2017)
     * "2017-12-14 23:00" (for December 14th, 2017 at 11:00PM)
 
+  Dates should default to UTC for the timezone.
+
 * Numbers: Numbers should be provided as integer or floats without quotes.
   Use as many decimals as necessary.
 
@@ -114,32 +116,23 @@ registering each data source, as per the scheme outlined below:
 
 * Data frequency: How frequently do data events occur?
 
-    * Strict daily: Publish one event each day at a set time.
-    * Strict hourly: Publish one event each hour between a set range of
+    * ``daily``: Publish one event each day at a set time.
+    * ``hourly``: Publish one event each hour between a set range of
       minutes.
-    * Strict minutely: Publish one event each minutes between a set range
+    * ``minute``: Publish one event each minute between a set range
       of seconds.
-    * At least each x days: Publish one of more events every day.
-    * At least each x hours: Publish one or more events each hour.
-    * At lest each x minutes: Publish one of more events each minute.
 
-* Data Availability: How far back are we getting data?
+* Data Availability:
 
-    * Historical range: The data range for historical data. Use multiple date
-      ranges if the data does not follow a continuous timeframe.
-
-        * Start: Date/time of the first data event of the range.
-        * End: Date/time of the last data event of the range.
-        
-    * Ongoing: Will data events continue to be published at the specified
-      frequency on an ongoing basis?
-    * Scheduled holds: A list a dates for scheduled gaps in ongoing data.
+    * Historical: The dataset includes historical data.         
+    * Live: Data events will be published at the specified
+      frequency on an ongoing basis.
 
 Registering Data Sets
 ~~~~~~~~~~~~~~~~~~~~~
 To register a new data set, download and install the Catalyst client.
-Then, use the ``catalyst marketplace register`` command. In this example, data is
-published multiple times per hour at a variable time:
+Then, use the ``catalyst marketplace register`` command. In this example, data 
+is published multiple times per hour at a variable time:
 
 .. code-block:: bash
 
@@ -152,7 +145,7 @@ published multiple times per hour at a variable time:
 
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-To upload data in an registered data set, use the `catalyst publish-data`
+To upload data in an registered data set, use the ``catalyst marketplace publish``
 command:
 
 .. code-block:: bash
@@ -160,7 +153,7 @@ command:
     $ catalyst marketplace publish --dataset=test --datadir=~/test-data/
 
 Upon execution, Catalyst will automatically identify, validate and upload
-the data in all CSV files directly inside the specified `datadir`. It will not
+the data in all CSV files directly inside the specified ``datadir``. It will not
 scan recursively. 
 
 The file naming convention is inconsequential; Catalyst will process any
@@ -172,13 +165,106 @@ It does not roll-back the files already published.
 
 Publishing Live Data
 ~~~~~~~~~~~~~~~~~~~~
-Publishing live data works similarly to publishing historical data
-except that Catalyst will watch the `datadir` and try to publish new data in
-new or modified CSV files. To publish live data, simply add a the `watch`
-parameter to the 'publish-data` command:
+Publishing live data works the same as publishing historical data running the 
+same command every time new data is available:
 
 .. code-block:: bash
 
-    $ catalyst marketplace publish --dataset=test --datadir=~/test-data/ --watch
+    $ catalyst marketplace publish --dataset=test --datadir=~/test-data/
 
+Publishers' API
+~~~~~~~~~~~~~~~
+In order to facilitate the process of automating the publication of live data,
+the Data Marketplace provides the following Application Programming Interface 
+(API).
+
+Base URL: ``http://data.enigma.co``
+
+Authentication
+^^^^^^^^^^^^^^
+The endpoint requires an API key/secret pair. Use the catalyst client to publish
+data once manually, and it will generate the key/secret pair for you, and store
+it in the following location: ``$HOME/.catalyst/data/marketplace/addresses.json``
+from where you can retrieve it to use it programmatically.
+
+In your API request, you have to include the following HTTP headers: |br|
+(example code provided in Python)
+
+.. code-block:: python
+
+  import time
+  import hashlib
+  import hmac
+
+  def get_signed_headers(dataset, key, secret):
+    nonce = str(int(time.time()))
+
+    signature = hmac.new(
+          secret.encode('utf-8'),
+          '{}{}'.format(dataset, nonce).encode('utf-8'),
+          hashlib.sha512
+    ).hexdigest()
+
+    headers = {
+          'Sign': signature,
+          'Key': key,
+          'Nonce': nonce,
+          'Dataset': dataset,
+    }
+
+    return headers
+
+The nonce must be a monotonically increasing counter (in the example above 
+generated using the number of seconds since the `epoch`), and the signature is 
+the keyed-hash of the concatenation of the name of the dataset for which you 
+want to publish data and the nonce, encrypted with the secret.
+
+Publish endpoint
+^^^^^^^^^^^^^^^^
+The endpoint used for publishing data is located at ``/marketplace/publish``, 
+and it only accepts ``POST`` requests. If you try to visit the endpoint with 
+your browser, you will get a **Method Not Allowed** error because by default the 
+browser will use ``GET`` to retrieve the page, and it will fail.
+
+You need to include the files you want to upload in the request as follows:|br|
+(example code provided in Python)
+
+.. code-block:: python
+
+  import glob
+  import requests
+
+  BASE_URL = 'https://data.enigma.co'
+
+  dataset = ''    # specify your dataset
+  key = ''        # specify your key
+  secret = ''     # specify your secret
+  datadir = ''    # specify your data folder
+
+  filenames = glob.glob(os.path.join(datadir, '*.csv'))
+
+  if not filenames:
+    raise ValueError('No files to upload.')
+
+  files = []
+  for file in filenames:
+      files.append(('file', open(file, 'rb')))
+
+  headers = get_signed_headers(dataset, key, secret)
+
+  r = requests.post('{}/marketplace/publish'.format(BASE_URL),
+                    files=files,
+                    headers=headers)
+
+  if r.status_code != 200:
+      raise ValueError('Error uploading file: {}'.format(r.status_code))
+
+  if 'error' in r.json():
+      raise ValueError('Error uploading file: {}'.format(r.json()['error'])
+
+  print('Dataset {} uploaded successfully.'.format(dataset))
+
+.. |br| raw:: html
+
+   <br />
 
