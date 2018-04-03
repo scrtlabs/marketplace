@@ -197,7 +197,7 @@ In your API request, you have to include the following HTTP headers: |br|
   import hmac
 
   def get_signed_headers(dataset, key, secret):
-    nonce = str(int(time.time()))
+    nonce = str(int(time.time() * 1000))
 
     signature = hmac.new(
           secret.encode('utf-8'),
