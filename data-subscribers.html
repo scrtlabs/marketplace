@@ -1,44 +1,160 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Data Subscribers &#8212; Enigma Data Marketplace 0.4 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Subscribers &mdash; Enigma Data Marketplace 0.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
     <link rel="next" title="Data Providers" href="data-providers.html" />
     <link rel="prev" title="Configuration" href="configuration.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="data-providers.html" title="Data Providers"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Enigma Data Marketplace 0.4 documentation</a> &#187;</li> 
-      </ul>
-    </div>  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smart-contract.html">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Data Subscribers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subscribe">Subscribe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ingest">Ingest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-in-an-algorithm">Use in an Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Enigma Data Marketplace</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Subscribers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/data-subscribers.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="data-subscribers">
 <h1>Data Subscribers<a class="headerlink" href="#data-subscribers" title="Permalink to this headline">¶</a></h1>
@@ -50,12 +166,12 @@ data sets may be usable for backtesting as well as live trading.</p>
 <p>The Enigma Data Marketplace enables data providers to publish data sets and make
 them directly available to subscribers. All published data is validated and
 hosted on the Enigma Data Marketplace. Your subscription payment is protected
-by the <a class="reference internal" href="smart-contract.html"><span class="doc">Enigma Data Marketplace Smart Contract</span></a>. If a
+by the <a class="reference internal" href="smart-contract.html"><em>Enigma Data Marketplace Smart Contract</em></a>. If a
 provider stops delivering data as per their agreement, the subscriber will be
 automatically refunded on a <em>pro rata</em> basis for the unfulfilled portion of
 their subscription.</p>
-<p>The following command subscribes to the <code class="docutils literal notranslate"><span class="pre">marketcap</span></code> data set:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ catalyst marketplace subscribe --dataset<span class="o">=</span>marketcap
+<p>The following command subscribes to the <code class="docutils literal"><span class="pre">marketcap</span></code> data set:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace subscribe --dataset<span class="o">=</span>marketcap
 
 The price <span class="k">for</span> a monthly subscription to this dataset is <span class="m">10</span> ENG
 Checking that the ENG balance in 0x..... is greater than <span class="m">10</span> ENG... OK.
@@ -68,10 +184,10 @@ transactions to process your subscription to the dataset.</p>
 </div>
 <div class="section" id="ingest">
 <h2>Ingest<a class="headerlink" href="#ingest" title="Permalink to this headline">¶</a></h2>
-<p>The Catalyst <code class="docutils literal notranslate"><span class="pre">ingest-data</span></code> command downloads and makes the given data set
+<p>The Catalyst <code class="docutils literal"><span class="pre">ingest-data</span></code> command downloads and makes the given data set
 available locally for backtesting or live trading with Catalyst.</p>
-<p>The following command ingests the <code class="docutils literal notranslate"><span class="pre">marketcap</span></code> data set:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ catalyst marketplace ingest --dataset<span class="o">=</span>marketcap
+<p>The following command ingests the <code class="docutils literal"><span class="pre">marketcap</span></code> data set:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ catalyst marketplace ingest --dataset<span class="o">=</span>marketcap
 Starting download of dataset <span class="k">for</span> ingestion...
 Dataset downloaded successfully. Processing dataset...
 INFO: Marketplace: Processing file <span class="m">0</span> of <span class="m">1</span>
@@ -79,7 +195,7 @@ INFO: Marketplace: Processing file <span class="m">1</span> of <span class="m">1
 </pre></div>
 </div>
 <p>If you need to keep the data up to date while running a live algorithm, you can
-schedule a job (<code class="docutils literal notranslate"><span class="pre">cron</span></code> in Linux/MacOS) to run the above command at periodic
+schedule a job (<code class="docutils literal"><span class="pre">cron</span></code> in Linux/MacOS) to run the above command at periodic
 intervals, and the live/paper trading algorithm will always retrieve the latest
 data available on disk on every iteration of the algorithm.</p>
 </div>
@@ -90,7 +206,7 @@ appropriate, the data source is now usable in your algorithms.</p>
 <p>This snippet of code below shows how to use our Marketcap data set in the
 <cite>initialize()</cite> function of an algorithm to rank the top-five asset by
 market cap:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">catalyst.api</span> <span class="kn">import</span> <span class="n">get_dataset</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">catalyst.api</span> <span class="kn">import</span> <span class="n">get_dataset</span>
 <span class="kn">from</span> <span class="nn">catalyst.exchange.utils.stats_utils</span> <span class="kn">import</span> <span class="n">set_print_settings</span>
 
 <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
@@ -134,68 +250,71 @@ market cap:</p>
 </div>
 
 
+           </div>
+           
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Data Subscribers</a><ul>
-<li><a class="reference internal" href="#subscribe">Subscribe</a></li>
-<li><a class="reference internal" href="#ingest">Ingest</a></li>
-<li><a class="reference internal" href="#use-in-an-algorithm">Use in an Algorithm</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data-providers.html" class="btn btn-neutral float-right" title="Data Providers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="configuration.html"
-                        title="previous chapter">Configuration</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="data-providers.html"
-                        title="next chapter">Data Providers</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/data-subscribers.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Enigma MPC, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="data-providers.html" title="Data Providers"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Enigma Data Marketplace 0.4 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Enigma MPC, Inc..
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

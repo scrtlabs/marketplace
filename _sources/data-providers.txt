@@ -172,6 +172,22 @@ same command every time new data is available:
 
     $ catalyst marketplace publish --dataset=test --datadir=~/test-data/
 
+Withdraw Tokens Owed
+~~~~~~~~~~~~~~~~~~~~
+As a publisher, you are entitled to receive ENG tokens from those who have subscribed
+to your dataset in accordance with the subscription cycle. You can check to see how many 
+ENG tokens you can withdraw at this given moment:
+
+.. code-block:: bash
+
+    $ catalyst marketplace get_withdraw_amount --dataset=test
+
+To carry out the withdrawal transaction, run this command: 
+
+.. code-block:: bash
+
+    $ catalyst marketplace withdraw --dataset=test
+
 Publishers' API
 ~~~~~~~~~~~~~~~
 In order to facilitate the process of automating the publication of live data,
