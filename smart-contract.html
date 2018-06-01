@@ -1,220 +1,44 @@
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Smart Contract &mdash; Enigma Data Marketplace 0.4 documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Smart Contract &#8212; Enigma Data Marketplace 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
-  
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Enigma Data Marketplace 0.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
 
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Enigma Data Marketplace 0.4 documentation" href="index.html"/>
-        <link rel="next" title="Configuration" href="configuration.html"/>
-        <link rel="prev" title="Introduction" href="introduction.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="index.html" class="icon icon-home"> Enigma Data Marketplace
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Contract</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subscription">Subscription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subscriber-related-functions">Subscriber related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#subscribe-bytes32-sourcename-bool">subscribe(bytes32 sourceName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#refundsubscriber-bytes32-dataname-bool">refundSubscriber(bytes32 dataName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#data-curator-related-functions">Data curator related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#register-bytes32-sourcename-uint-price-address-owner-bool">register(bytes32 sourceName, uint price, address owner):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#withdrawprovider-bytes32-dataname-bool">withdrawProvider(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#updatedatasourceprice-bytes32-dataname-uint256-newprice-bool">updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#general-public-functions">General public functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#getdataproviderinfo-bytes32-dataname-provider">getDataProviderInfo(bytes32 dataName):Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getallproviders-bytes32">getAllProviders():bytes32[]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getwithdrawamount-bytes32-dataname">getWithdrawAmount(bytes32 dataName)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getrefundamount-address-subscriber-bytes32-dataname-uint">getRefundAmount(address subscriber, bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#isactivedatasource-bytes32-dataname-bool">isActiveDataSource(bytes32 dataName):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#isexpiredsubscription-address-subscriber-bytes32-datasourcename-bool">isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#marketplace-owner-only-related-functions">Marketplace owner only related functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setpunishprovider-bytes32-dataname-bool-ispunished-bool">setPunishProvider(bytes32 dataName, bool _isPunished):bool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#marketplace-functionallity-with-loops-outside-the-chain">Marketplace functionallity with loops outside the chain</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#refundsubscriberat-bytes32-dataname-uint256-index-bool">refundSubscriberAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getrefundamountat-bytes32-dataname-uint256-index-uint">getRefundAmountAt(bytes32 dataName,uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getsubscriptionssize-bytes32-dataname-uint">getSubscriptionsSize(bytes32 dataName):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#checksubscriptionat-bytes32-dataname-uint256-index">checkSubscriptionAt(bytes32 dataName, uint256 _index)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#withrawproviderat-bytes32-dataname-uint256-index-bool">withrawProviderAt(bytes32 dataName, uint256 _index):bool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getwithdrawamountat-bytes32-dataname-uint256-index-uint">getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getprovidernamessize-uint">getProviderNamesSize():uint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getnameat-uint256-index-bytes32">getNameAt(uint256 _index):bytes32</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#the-marketplace-contract-event-types">The Marketplace contract Event types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#source-code">Source code</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-subscribers.html">Data Subscribers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-providers.html">Data Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentication.html">Server-side Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-sets.html">Data Sets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Enigma Data Marketplace</a>
-        
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Smart Contract</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="_sources/smart-contract.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="section" id="smart-contract">
 <h1>Smart Contract<a class="headerlink" href="#smart-contract" title="Permalink to this headline">¶</a></h1>
@@ -232,10 +56,10 @@ each subscription to any data set (price, start time and end time).</p>
 <h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
 <p>Registration is the process through which data providers can offer their
 datasets on the Data Marketplace. Data providers are paid for their dataset
-after the <code class="docutils literal"><span class="pre">subscription</span> <span class="pre">period</span></code> ends for any given subscriber, through a
-<code class="docutils literal"><span class="pre">withdraw</span></code> transaction.</p>
+after the <code class="docutils literal notranslate"><span class="pre">subscription</span> <span class="pre">period</span></code> ends for any given subscriber, through a
+<code class="docutils literal notranslate"><span class="pre">withdraw</span></code> transaction.</p>
 <p>In order to make a new data set available in the Marketplace, the data provider
-needs to register with the smart contract by sending a <code class="docutils literal"><span class="pre">register</span></code> transaction
+needs to register with the smart contract by sending a <code class="docutils literal notranslate"><span class="pre">register</span></code> transaction
 with the following details:</p>
 <ul>
 <li><p class="first"><strong>Datasource name</strong></p>
@@ -271,10 +95,10 @@ deactivating a dataset.</p>
 <div class="section" id="subscription">
 <h2>Subscription<a class="headerlink" href="#subscription" title="Permalink to this headline">¶</a></h2>
 <p>The subscribers are the users in the Data Marketplace that pay for data. Every
-payment is first made to the <code class="docutils literal"><span class="pre">Marketplace</span></code> contract and is held until the
+payment is first made to the <code class="docutils literal notranslate"><span class="pre">Marketplace</span></code> contract and is held until the
 Subscription is expired or the Data curator is punished (should their data stop
 being available). In case the data provider was punished then and only then,
-the subscriber will able to ask for a <code class="docutils literal"><span class="pre">refund</span></code>. The refund is prorated on the
+the subscriber will able to ask for a <code class="docutils literal notranslate"><span class="pre">refund</span></code>. The refund is prorated on the
 fraction of the monthly subscription when the data was available, and will be
 deposited back to the subscriber’s address.</p>
 <p>In order to access an existing dataset, a user needs to subscribe to the
@@ -298,7 +122,7 @@ from step #1 above succeeds).</li>
 <div class="section" id="the-marketplace-contract-main-functionality">
 <h2>The Marketplace contract main functionality<a class="headerlink" href="#the-marketplace-contract-main-functionality" title="Permalink to this headline">¶</a></h2>
 <p>The full API documentation can be found in the Github repository inside the
-<code class="docutils literal"><span class="pre">IBasicMarketplace.sol</span></code>, <code class="docutils literal"><span class="pre">IMarketplace.sol</span></code> and <code class="docutils literal"><span class="pre">IRecoverableMarketplace.sol</span></code> contracts at:
+<code class="docutils literal notranslate"><span class="pre">IBasicMarketplace.sol</span></code>, <code class="docutils literal notranslate"><span class="pre">IMarketplace.sol</span></code> and <code class="docutils literal notranslate"><span class="pre">IRecoverableMarketplace.sol</span></code> contracts at:
 <a class="reference external" href="https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol">https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IBasicMarketplace.sol</a>
 <a class="reference external" href="https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IMarketplace.sol">https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IMarketplace.sol</a>
 <a class="reference external" href="https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IRecoverableMarketplace.sol">https://github.com/enigmampc/smart_contract_marketplace/blob/master/contracts/IRecoverableMarketplace.sol</a></p>
@@ -319,7 +143,7 @@ price of the desired dataset.</p>
 amount back to the subscriber if the data curator was punished sometime during
 the subscription time.
 Refund is calculated using that formula:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>PRICE - <span class="o">[(</span>punishTime- startTime<span class="o">)</span> * PRICE / <span class="o">(</span>endTime - startTime<span class="o">)]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PRICE - <span class="o">[(</span>punishTime- startTime<span class="o">)</span> * PRICE / <span class="o">(</span>endTime - startTime<span class="o">)]</span>
 </pre></div>
 </div>
 </div>
@@ -328,7 +152,7 @@ Refund is calculated using that formula:</p>
 <h2>Data curator related functions<a class="headerlink" href="#data-curator-related-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="register-bytes32-sourcename-uint-price-address-owner-bool">
 <h3>register(bytes32 sourceName, uint price, address owner):bool<a class="headerlink" href="#register-bytes32-sourcename-uint-price-address-owner-bool" title="Permalink to this headline">¶</a></h3>
-<p>Registers a new data source. <code class="docutils literal"><span class="pre">sourceName</span></code> must be unique, and <code class="docutils literal"><span class="pre">price</span></code> is
+<p>Registers a new data source. <code class="docutils literal notranslate"><span class="pre">sourceName</span></code> must be unique, and <code class="docutils literal notranslate"><span class="pre">price</span></code> is
 designated in ENG tokens for a monthly subscription.</p>
 </div>
 <div class="section" id="withdrawprovider-bytes32-dataname-bool">
@@ -337,7 +161,7 @@ designated in ENG tokens for a monthly subscription.</p>
 owner address for each subscription that belongs to the data curator and not
 paid yet. It will ignore subscriptions that are not expired yet and calculate
 the relative time amount in case the curator is punished with that formula:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>punishTime- startTime<span class="o">)</span> * PRICE / <span class="o">(</span>endTime - startTime<span class="o">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>punishTime- startTime<span class="o">)</span> * PRICE / <span class="o">(</span>endTime - startTime<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -348,9 +172,9 @@ and can be used only by the <cite>data owner</cite>.</p>
 </div>
 <div class="section" id="changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">
 <h3>changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool<a class="headerlink" href="#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool" title="Permalink to this headline">¶</a></h3>
-<p>Update the <code class="docutils literal"><span class="pre">dataset</span></code> activity status, effective for all future subscriptions.
-<code class="docutils literal"><span class="pre">_isActive=false</span></code> means that the data source is offline for some reason.
-Defaults to <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<p>Update the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> activity status, effective for all future subscriptions.
+<code class="docutils literal notranslate"><span class="pre">_isActive=false</span></code> means that the data source is offline for some reason.
+Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </div>
 </div>
 <div class="section" id="general-public-functions">
@@ -413,7 +237,7 @@ to a given dataset.</p>
 <div class="section" id="setpunishprovider-bytes32-dataname-bool-ispunished-bool">
 <h3>setPunishProvider(bytes32 dataName, bool _isPunished):bool<a class="headerlink" href="#setpunishprovider-bytes32-dataname-bool-ispunished-bool" title="Permalink to this headline">¶</a></h3>
 <p>Set a punishment status transaction to a dataset. Can be set only by the
-Marketplace contract owner. If <code class="docutils literal"><span class="pre">_isPunished</span></code> is <code class="docutils literal"><span class="pre">True</span></code> the daset will be
+Marketplace contract owner. If <code class="docutils literal notranslate"><span class="pre">_isPunished</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> the daset will be
 punished.</p>
 </div>
 </div>
@@ -449,7 +273,7 @@ punished.</p>
 </div>
 <div class="section" id="isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">
 <h3>isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool<a class="headerlink" href="#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">True</span></code> = Expired, <code class="docutils literal"><span class="pre">False</span></code> = Not expired.</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> = Expired, <code class="docutils literal notranslate"><span class="pre">False</span></code> = Not expired.</p>
 </div>
 <div class="section" id="withrawproviderat-bytes32-dataname-uint256-index-bool">
 <h3>withrawProviderAt(bytes32 dataName, uint256 _index):bool<a class="headerlink" href="#withrawproviderat-bytes32-dataname-uint256-index-bool" title="Permalink to this headline">¶</a></h3>
@@ -465,14 +289,14 @@ punished.</p>
 </div>
 <div class="section" id="getnameat-uint256-index-bytes32">
 <h3>getNameAt(uint256 _index):bytes32<a class="headerlink" href="#getnameat-uint256-index-bytes32" title="Permalink to this headline">¶</a></h3>
-<p>Get the <code class="docutils literal"><span class="pre">name=id</span></code> of a data curator at index (0,…,size);</p>
+<p>Get the <code class="docutils literal notranslate"><span class="pre">name=id</span></code> of a data curator at index (0,…,size);</p>
 </div>
 </div>
 <div class="section" id="the-marketplace-contract-event-types">
 <h2>The Marketplace contract Event types<a class="headerlink" href="#the-marketplace-contract-event-types" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">
 <h3>event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);<a class="headerlink" href="#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev When data provider finishes registration in the contract
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev When data provider finishes registration in the contract
 @param dataOwner the owner of the data
 @param dataSourceName the new name registred
 @param price the price for subscription
@@ -482,7 +306,7 @@ punished.</p>
 </div>
 <div class="section" id="event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">
 <h3>event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);<a class="headerlink" href="#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev an event that indicates that someone has paid the Marketplace contract subscription (before that data is updated in the contract)
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev an event that indicates that someone has paid the Marketplace contract subscription (before that data is updated in the contract)
 @param from who paid
 @param to the data source owner
 @param value the value that was transfered
@@ -491,7 +315,7 @@ punished.</p>
 </div>
 <div class="section" id="event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">
 <h3>event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);<a class="headerlink" href="#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev an event fired every time subscription has finished (AFTER succssfull payment AND data update).
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev an event fired every time subscription has finished (AFTER succssfull payment AND data update).
 @param subscriber who subscribed
 @param dataSourceName the data source name
 @param dataOwner the owner of the data source
@@ -502,7 +326,7 @@ punished.</p>
 </div>
 <div class="section" id="event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">
 <h3>event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);<a class="headerlink" href="#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd upon a token transfer to provider (before finishing state update)
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd upon a token transfer to provider (before finishing state update)
 @param dataOwner - the owner that got paid
 @param dataSourceName - the name of the data source
 @param amount - the amount transferd from the marketplace contract to the provider
@@ -511,7 +335,7 @@ punished.</p>
 </div>
 <div class="section" id="event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">
 <h3>event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);<a class="headerlink" href="#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd when the provider finished the withdraw (TransferToProvider event + state update)
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd when the provider finished the withdraw (TransferToProvider event + state update)
 @param dataOwner - the owner that withdrawed
 @param dataSourceName - name of the data source
 @param amount - the amount withdrawed
@@ -520,7 +344,7 @@ punished.</p>
 </div>
 <div class="section" id="event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">
 <h3>event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);<a class="headerlink" href="#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd when punishment status changed (true = punished, false = not punished)
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd when punishment status changed (true = punished, false = not punished)
 @param dataOwner - the provider
 @param dataSourceName - the name of the data source
 @param isPunished - the status current status AFTER the change
@@ -529,7 +353,7 @@ punished.</p>
 </div>
 <div class="section" id="event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">
 <h3>event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);<a class="headerlink" href="#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd when the subscriber got a refund (punished provider)
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd when the subscriber got a refund (punished provider)
 @param subscriber - the refunded address
 @param dataSourceName - name of the data source
 @param amount - the amount of the refund
@@ -538,7 +362,7 @@ punished.</p>
 </div>
 <div class="section" id="event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">
 <h3>event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);<a class="headerlink" href="#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd uppon a price change of an existing data source
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd uppon a price change of an existing data source
 @param editor the owner that changed the price
 @param dataSourceName the data source that has changed
 @param newPrice the new price.
@@ -547,7 +371,7 @@ punished.</p>
 </div>
 <div class="section" id="event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">
 <h3>event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);<a class="headerlink" href="#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>@dev triggerd upon a change in the state of a data source availablity.
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@dev triggerd upon a change in the state of a data source availablity.
 @param editor who changed the activity state
 @param dataSourceName which dataSource changed.
 @param newStatus true = active, false = not active (cannot be sold)
@@ -563,75 +387,119 @@ punished.</p>
 </div>
 
 
-           </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2018, Enigma MPC, Inc..
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Smart Contract</a><ul>
+<li><a class="reference internal" href="#registration">Registration</a></li>
+<li><a class="reference internal" href="#subscription">Subscription</a></li>
+<li><a class="reference internal" href="#the-marketplace-contract-main-functionality">The Marketplace contract main functionality</a></li>
+<li><a class="reference internal" href="#subscriber-related-functions">Subscriber related functions</a><ul>
+<li><a class="reference internal" href="#subscribe-bytes32-sourcename-bool">subscribe(bytes32 sourceName):bool</a></li>
+<li><a class="reference internal" href="#refundsubscriber-bytes32-dataname-bool">refundSubscriber(bytes32 dataName):bool</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-curator-related-functions">Data curator related functions</a><ul>
+<li><a class="reference internal" href="#register-bytes32-sourcename-uint-price-address-owner-bool">register(bytes32 sourceName, uint price, address owner):bool</a></li>
+<li><a class="reference internal" href="#withdrawprovider-bytes32-dataname-bool">withdrawProvider(bytes32 dataName):bool</a></li>
+<li><a class="reference internal" href="#updatedatasourceprice-bytes32-dataname-uint256-newprice-bool">updateDataSourcePrice(bytes32 dataName, uint256 newPrice):bool</a></li>
+<li><a class="reference internal" href="#changedatasourceactivitystatus-bytes32-dataname-bool-isactive-bool">changeDataSourceActivityStatus(bytes32 dataName,bool _isActive):bool</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-public-functions">General public functions</a><ul>
+<li><a class="reference internal" href="#getdataproviderinfo-bytes32-dataname-provider">getDataProviderInfo(bytes32 dataName):Provider</a></li>
+<li><a class="reference internal" href="#checkaddresssubscription-address-subscriber-bytes32-dataname">checkAddressSubscription(address subscriber, bytes32 dataName)</a></li>
+<li><a class="reference internal" href="#getallproviders-bytes32">getAllProviders():bytes32[]</a></li>
+<li><a class="reference internal" href="#getwithdrawamount-bytes32-dataname">getWithdrawAmount(bytes32 dataName)</a></li>
+<li><a class="reference internal" href="#getrefundamount-address-subscriber-bytes32-dataname-uint">getRefundAmount(address subscriber, bytes32 dataName):uint</a></li>
+<li><a class="reference internal" href="#isactivedatasource-bytes32-dataname-bool">isActiveDataSource(bytes32 dataName):bool</a></li>
+<li><a class="reference internal" href="#isexpiredsubscription-address-subscriber-bytes32-datasourcename-bool">isExpiredSubscription(address _subscriber, bytes32 _dataSourceName):bool</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#marketplace-owner-only-related-functions">Marketplace owner only related functions</a><ul>
+<li><a class="reference internal" href="#setpunishprovider-bytes32-dataname-bool-ispunished-bool">setPunishProvider(bytes32 dataName, bool _isPunished):bool</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#marketplace-functionallity-with-loops-outside-the-chain">Marketplace functionallity with loops outside the chain</a><ul>
+<li><a class="reference internal" href="#refundsubscriberat-bytes32-dataname-uint256-index-bool">refundSubscriberAt(bytes32 dataName, uint256 _index):bool</a></li>
+<li><a class="reference internal" href="#getrefundamountat-bytes32-dataname-uint256-index-uint">getRefundAmountAt(bytes32 dataName,uint256 _index):uint</a></li>
+<li><a class="reference internal" href="#getsubscriptionssize-bytes32-dataname-uint">getSubscriptionsSize(bytes32 dataName):uint</a></li>
+<li><a class="reference internal" href="#checksubscriptionat-bytes32-dataname-uint256-index">checkSubscriptionAt(bytes32 dataName, uint256 _index)</a></li>
+<li><a class="reference internal" href="#isexpiredsubscriptionat-bytes32-dataname-uint256-index-bool">isExpiredSubscriptionAt(bytes32 dataName,uint256 _index):bool</a></li>
+<li><a class="reference internal" href="#withrawproviderat-bytes32-dataname-uint256-index-bool">withrawProviderAt(bytes32 dataName, uint256 _index):bool</a></li>
+<li><a class="reference internal" href="#getwithdrawamountat-bytes32-dataname-uint256-index-uint">getWithdrawAmountAt(bytes32 dataName, uint256 _index):uint</a></li>
+<li><a class="reference internal" href="#getprovidernamessize-uint">getProviderNamesSize():uint</a></li>
+<li><a class="reference internal" href="#getnameat-uint256-index-bytes32">getNameAt(uint256 _index):bytes32</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-marketplace-contract-event-types">The Marketplace contract Event types</a><ul>
+<li><a class="reference internal" href="#event-registered-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-price-bool-success">event Registered(address indexed dataOwner, bytes32 indexed dataSourceName, uint price, bool success);</a></li>
+<li><a class="reference internal" href="#event-subscriptiondeposited-address-indexed-from-address-indexed-to-uint256-value">event SubscriptionDeposited(address indexed from, address indexed to, uint256 value);</a></li>
+<li><a class="reference internal" href="#event-subscribed-address-indexed-subscriber-bytes32-indexed-datasourcename-address-indexed-dataowner-uint-price-bool-success">event Subscribed(address indexed subscriber,bytes32 indexed dataSourceName, address indexed dataOwner, uint price, bool success);</a></li>
+<li><a class="reference internal" href="#event-transfertoprovider-address-indexed-dataowner-bytes32-indexed-datasourcename-uint256-amount">event TransferToProvider(address indexed dataOwner, bytes32 indexed dataSourceName, uint256 amount);</a></li>
+<li><a class="reference internal" href="#event-providerwithdraw-address-indexed-dataowner-bytes32-indexed-datasourcename-uint-amount">event ProviderWithdraw(address indexed dataOwner, bytes32 indexed dataSourceName, uint amount);</a></li>
+<li><a class="reference internal" href="#event-providerpunishstatus-address-indexed-dataowner-bytes32-indexed-datasourcename-bool-ispunished">event ProviderPunishStatus(address indexed dataOwner, bytes32 indexed dataSourceName, bool isPunished);</a></li>
+<li><a class="reference internal" href="#event-subscriberrefund-address-indexed-subscriber-bytes32-indexed-datasourcename-uint256-refundamount">event SubscriberRefund(address indexed subscriber,bytes32 indexed dataSourceName, uint256 refundAmount);</a></li>
+<li><a class="reference internal" href="#event-priceupdate-address-indexed-editor-bytes32-indexed-datasourcename-uint256-newprice">event PriceUpdate(address indexed editor, bytes32 indexed dataSourceName, uint256 newPrice);</a></li>
+<li><a class="reference internal" href="#event-activityupdate-address-indexed-editor-bytes32-indexed-datasourcename-bool-newstatus">event ActivityUpdate(address indexed editor, bytes32 indexed dataSourceName, bool newStatus);</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#source-code">Source code</a></li>
+</ul>
+</li>
+</ul>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/smart-contract.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Enigma Data Marketplace 0.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Enigma MPC, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
 </html>
