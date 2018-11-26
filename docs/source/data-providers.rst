@@ -141,7 +141,7 @@ is published multiple times per hour at a variable time:
     Enter the price for a monthly subscription to this dataset in ENG: 10
     Enter the data frequency [daily, hourly, minute]: daily
     Does it include historical data? [default: Y]: 
-    Doest it include live data? [default: Y]: 
+    Does it include live data? [default: Y]: 
 
 Publishing Historical Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
